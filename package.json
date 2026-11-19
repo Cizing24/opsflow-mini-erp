@@ -11,10 +11,10 @@
     "node": ">=24.11 <25"
   },
   "scripts": {
-    "dev:api": "tsx watch apps/api/src/main.ts",
+    "dev:api": "npm run build -w @opsflow/shared && tsx watch apps/api/src/main.ts",
     "dev:web": "npm run dev -w @opsflow/web",
     "build": "npm run build -w @opsflow/shared && npm run build -w @opsflow/api && npm run build -w @opsflow/web",
-    "typecheck": "npm run typecheck --workspaces --if-present",
+    "typecheck": "npm run build -w @opsflow/shared && npm run typecheck --workspaces --if-present",
     "lint": "eslint .",
     "test": "vitest run tests/unit",
     "test:integration": "tsx scripts/test-database.ts",

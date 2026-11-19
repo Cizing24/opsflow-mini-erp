@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - name: Remove historical evidence before this run
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; for(const p of ['docs/testing/unit-results.json','docs/testing/integration-results.json','docs/testing/e2e-results.json','docs/testing/docker-smoke.json','docs/testing/npm-audit.json','docs/maintenance/fault-results.json','docs/maintenance/backup-restore-results.json','docs/screenshots/desktop.png','docs/screenshots/mobile.png'])fs.rmSync(p,{force:true});"
       - name: Create isolated local configuration
         run: |
           node --input-type=module -e "import fs from 'node:fs';import {randomBytes} from 'node:crypto';let s=fs.readFileSync('.env.example','utf8');s=s.replaceAll('local-only-change-me',randomBytes(18).toString('hex')).replaceAll('local-root-change-me',randomBytes(18).toString('hex')).replace('DEMO_PASSWORD=','DEMO_PASSWORD='+randomBytes(20).toString('hex'));fs.writeFileSync('.env',s);"
@@ -25,10 +28,10 @@ jobs:
       - run: npm run db:migrate
       - run: npm run seed
       - run: npm run lint
-      - run: npm audit --audit-level=moderate
+      - run: npm audit --audit-level=moderate --json > docs/testing/npm-audit.json
       - run: npm run typecheck
       - run: npm run build
-      - run: npm test
+      - run: npm test -- --reporter=default --reporter=json --outputFile=docs/testing/unit-results.json
       - run: node --import tsx scripts/test-database.ts --setup --reset
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
@@ -43,6 +46,8 @@ jobs:
         with:
           name: verification-evidence
           path: |
+            docs/testing/unit-results.json
+            docs/testing/npm-audit.json
             docs/testing/integration-results.json
             docs/testing/e2e-results.json
             docs/testing/docker-smoke.json

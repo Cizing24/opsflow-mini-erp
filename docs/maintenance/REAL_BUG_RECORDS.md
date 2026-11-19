@@ -26,6 +26,10 @@
 
 ## 其他開發檢查
 
+[Issue #11](https://github.com/Cizing24/opsflow-mini-erp/issues/11)：真實 Ubuntu CI [44604237209](https://github.com/Cizing24/opsflow-mini-erp/actions/runs/44604237209) 的 Typecheck 找不到 @opsflow/shared；本機殘留的 dist 掩蓋了前置建置依賴。修正根層 Typecheck 與 dev:api 先 build shared；本機實際移開舊 dist 後重新 Typecheck 成功，沒有提交 dist 或放寬型別規則。後續完整 CI 結果見 DELIVERY_REPORT。
+
+[Issue #12](https://github.com/Cizing24/opsflow-mini-erp/issues/12)：100,706 筆異動實測，專案列表 16 並行的 P95 為 2,291.707ms。原本將各專案所有 OUT 明細載回 Node 再 filter/reduce；改為參數化 SQL 的 GROUP BY SUM，僅回每專案彙總。原基準在 before-project-aggregation.json；integration 直接比對 SQL 回應與逐筆 ledger 的金額及數量。改善幅度以後測真實結果為準。
+
 [Issue #8](https://github.com/Cizing24/opsflow-mini-erp/issues/8)：Playwright 的 webServer health 在 globalSetup 前執行；全新 opsflow_e2e 尚未建立時，health 等待 60 秒逾時。已將 setup/migrate/seed 前移到 E2E runner，再啟動 Playwright；從新建 DB 實測四項 E2E 通過。
 
 [Issue #9](https://github.com/Cizing24/opsflow-mini-erp/issues/9)：Malformed JSON 回 400，但 parser 在 Request ID middleware 前，錯誤沒有追蹤編號。`json-boundary-red.json` 保留 undefined 的失敗；修正 middleware 順序，並明確處理 payload limit 為 413。新增測試同時核對 400／413 與 Request ID；27 項整合測試已實際通過。

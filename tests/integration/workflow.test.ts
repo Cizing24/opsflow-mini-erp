@@ -505,6 +505,19 @@ describe.sequential("real MySQL ERP lifecycle", () => {
     expect(p.actualCents).toBeGreaterThan(0);
     expect(p.committedCents).toBeGreaterThan(p.actualCents);
     expect(result.kpis.inventoryTurnover).toBeNull();
+    const projectList = await (
+      await call(
+        "admin",
+        "/api/projects?q=" + encodeURIComponent("整合驗證工程"),
+      )
+    ).json();
+    const projectLedger = ledger.filter((m) => m.projectId === projectId);
+    expect(projectList.items[0].actualCents).toBe(
+      projectLedger.reduce((s, m) => s + m.quantity * m.unitCostCents, 0),
+    );
+    expect(projectList.items[0].issuedQuantity).toBe(
+      projectLedger.reduce((s, m) => s + m.quantity, 0),
+    );
     expect((await call("engineer", "/api/reports/costs")).status).toBe(403);
   });
   it("validates atomic CSV import and exports formula-safe CSV", async () => {
@@ -526,6 +539,10 @@ describe.sequential("real MySQL ERP lifecycle", () => {
     ).toBe(201);
     const response = await call("warehouse", "/api/materials/export");
     expect(await response.text()).toContain("'=FORMULA");
+    expect(
+      (await db.material.findUniqueOrThrow({ where: { sku: "=FORMULA" } }))
+        .origin,
+    ).toBe("TEST");
   });
   it("rejects blank CSV costs and duplicate header columns", async () => {
     for (const csv of [

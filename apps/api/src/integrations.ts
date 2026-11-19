@@ -16,7 +16,7 @@ import { stringify } from "csv-stringify/sync";
 import { z } from "zod";
 import type { Response } from "express";
 import { materialSchema } from "@opsflow/shared";
-import { db } from "./db.js";
+import { db, runtimeOrigin } from "./db.js";
 import { audit } from "./transactions.js";
 import { AuthGuard, permit, type AuthRequest } from "./security.js";
 export function csvSafe(value: unknown) {
@@ -116,7 +116,9 @@ export class IntegrationsController {
     if (new Set(data.map((m) => m.sku)).size !== data.length)
       throw new BadRequestException("CSV 有重複 SKU");
     return db.$transaction(async (tx) => {
-      await tx.material.createMany({ data });
+      await tx.material.createMany({
+        data: data.map((row) => ({ ...row, origin: runtimeOrigin })),
+      });
       await audit(
         tx,
         req.user,

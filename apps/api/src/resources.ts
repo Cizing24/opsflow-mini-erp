@@ -20,10 +20,11 @@ import {
   listSchema,
 } from "@opsflow/shared";
 import { z } from "zod";
-import { db } from "./db.js";
+import { db, runtimeOrigin } from "./db.js";
 import { AuthGuard, permit, type AuthRequest } from "./security.js";
 import { audit, projectAccess } from "./transactions.js";
 import { randomUUID } from "node:crypto";
+import { Prisma } from "@prisma/client";
 @ApiTags("主檔與專案")
 @Controller("api")
 @UseGuards(AuthGuard)
@@ -102,17 +103,13 @@ export class ResourcesController {
       }),
     ]);
     const costs = rows.length
-      ? await db.movement.groupBy({
-          by: ["projectId"],
-          where: { kind: "OUT", projectId: { in: rows.map((r) => r.id) } },
-          _sum: { quantity: true },
-        })
-      : [];
-    const movements = rows.length
-      ? await db.movement.findMany({
-          where: { kind: "OUT", projectId: { in: rows.map((r) => r.id) } },
-          select: { projectId: true, quantity: true, unitCostCents: true },
-        })
+      ? await db.$queryRaw<
+          {
+            projectId: number;
+            actualCents: Prisma.Decimal;
+            issuedQuantity: Prisma.Decimal;
+          }[]
+        >`SELECT projectId,SUM(quantity*unitCostCents) actualCents,SUM(quantity) issuedQuantity FROM Movement WHERE kind='OUT' AND projectId IN (${Prisma.join(rows.map((r) => r.id))}) GROUP BY projectId`
       : [];
     return {
       total,
@@ -126,11 +123,12 @@ export class ResourcesController {
             s + a.lines.reduce((v, l) => v + l.quantity * l.unitCostCents, 0),
           0,
         ),
-        actualCents: movements
-          .filter((m) => m.projectId === r.id)
-          .reduce((s, m) => s + m.quantity * m.unitCostCents, 0),
-        issuedQuantity:
-          costs.find((c) => c.projectId === r.id)?._sum.quantity ?? 0,
+        actualCents: Number(
+          costs.find((c) => c.projectId === r.id)?.actualCents ?? 0,
+        ),
+        issuedQuantity: Number(
+          costs.find((c) => c.projectId === r.id)?.issuedQuantity ?? 0,
+        ),
       })),
     };
   }
@@ -275,7 +273,9 @@ export class ResourcesController {
     permit(req.user, ["ADMIN", "WAREHOUSE"]);
     const input = materialSchema.parse(body);
     return db.$transaction(async (tx) => {
-      const row = await tx.material.create({ data: input });
+      const row = await tx.material.create({
+        data: { ...input, origin: runtimeOrigin },
+      });
       await audit(
         tx,
         req.user,

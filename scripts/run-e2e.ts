@@ -61,8 +61,13 @@ await writeFile(
       stats: raw.stats,
       tests,
       exitCode: result.status,
-      environment:
-        "Chromium on Windows; isolated opsflow_e2e; raw configuration and credentials deliberately omitted",
+      environment: {
+        browser: "Chromium",
+        platform: process.platform,
+        node: process.version,
+        database: "opsflow_e2e",
+        credentialsOmitted: true,
+      },
     },
     null,
     2,
