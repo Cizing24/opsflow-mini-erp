@@ -85,6 +85,39 @@ describe.sequential("real MySQL ERP lifecycle", () => {
     expect((await call("", "/api/projects")).status).toBe(401);
     expect((await call("", "/api/health")).status).toBe(200);
   });
+  it("publishes executable OpenAPI input and security contracts", async () => {
+    const r = await call("", "/api/openapi.json");
+    expect(r.status).toBe(200);
+    const doc = await r.json();
+    expect(
+      doc.paths["/api/requests"].post.requestBody.content["application/json"]
+        .schema.required,
+    ).toContain("projectId");
+    expect(
+      doc.paths["/api/issues"].post.parameters.some(
+        (p: { name: string }) => p.name === "Idempotency-Key",
+      ),
+    ).toBe(true);
+    expect(doc.paths["/api/requests"].post.security).toEqual([{ cookie: [] }]);
+  });
+  it("returns structured 400/413 with request IDs for malformed and oversized JSON", async () => {
+    const malformed = await fetch(base + "/api/requests", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: process.env.APP_ORIGIN!,
+        Cookie: clients.admin.cookie,
+      },
+      body: "{",
+    });
+    expect(malformed.status).toBe(400);
+    expect((await malformed.json()).error.requestId).toBeTruthy();
+    const oversized = await call("admin", "/api/requests", "POST", {
+      unexpected: "x".repeat(300000),
+    });
+    expect(oversized.status).toBe(413);
+    expect((await oversized.json()).error.requestId).toBeTruthy();
+  });
   it("sets HttpOnly SameSite cookies and never returns password hashes", async () => {
     const r = await call("admin", "/api/auth/me");
     const text = await r.text();

@@ -22,6 +22,7 @@ import { InventoryController } from "./inventory.js";
 import { ReportsController } from "./reports.js";
 import { IntegrationsController } from "./integrations.js";
 import { db } from "./db.js";
+import { completeOpenApi } from "./openapi.js";
 @Controller("api")
 class HealthController {
   @Get("health") async health() {
@@ -62,9 +63,9 @@ export async function createApp() {
       },
     }),
   );
+  app.use(requestMiddleware);
   app.use(express.json({ limit: "200kb" }));
   app.use(cookieParser());
-  app.use(requestMiddleware);
   app.useGlobalFilters(new ErrorFilter());
   const config = new DocumentBuilder()
     .setTitle("OpsFlow ERP API")
@@ -74,7 +75,7 @@ export async function createApp() {
     .setVersion("1.0.0")
     .addCookieAuth("opsflow_session")
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = completeOpenApi(SwaggerModule.createDocument(app, config));
   app
     .getHttpAdapter()
     .get("/api/openapi.json", (_req: express.Request, res: express.Response) =>

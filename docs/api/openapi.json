@@ -1,0 +1,2283 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "HealthController_health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "tags": [
+          "Health"
+        ]
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "format": "email",
+                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 128
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "以電子郵件與密碼建立 HttpOnly session",
+        "tags": [
+          "認證"
+        ]
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "讀取目前使用者及 CSRF token",
+        "tags": [
+          "認證"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "撤銷目前 session",
+        "tags": [
+          "認證"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/catalog": {
+      "get": {
+        "operationId": "ResourcesController_catalog",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "角色可用的專案、物料、供應商、倉庫及同事選項",
+        "tags": [
+          "主檔與專案"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "operationId": "ResourcesController_projects",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "分頁查詢專案、預算承諾及實際成本",
+        "tags": [
+          "主檔與專案"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ResourcesController_createProject",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "管理員或主管建立專案",
+        "tags": [
+          "主檔與專案"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "budgetCents": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000000
+                  },
+                  "ownerId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "memberIds": {
+                    "maxItems": 100,
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "exclusiveMinimum": true,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "status": {
+                    "default": "ACTIVE",
+                    "type": "string",
+                    "enum": [
+                      "PLANNED",
+                      "ACTIVE",
+                      "COMPLETED"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "budgetCents",
+                  "ownerId",
+                  "memberIds",
+                  "status"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/projects/{id}": {
+      "patch": {
+        "operationId": "ResourcesController_updateProject",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "更新專案，保護已核准承諾預算",
+        "tags": [
+          "主檔與專案"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "budgetCents": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000000
+                  },
+                  "ownerId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "memberIds": {
+                    "maxItems": 100,
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "exclusiveMinimum": true,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "status": {
+                    "default": "ACTIVE",
+                    "type": "string",
+                    "enum": [
+                      "PLANNED",
+                      "ACTIVE",
+                      "COMPLETED"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "budgetCents",
+                  "ownerId",
+                  "memberIds",
+                  "status"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/projects/{id}/requirements": {
+      "post": {
+        "operationId": "ResourcesController_requirement",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "登錄專案物料需求",
+        "tags": [
+          "主檔與專案"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "materialId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 1000000
+                  }
+                },
+                "required": [
+                  "materialId",
+                  "quantity"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/suppliers": {
+      "post": {
+        "operationId": "ResourcesController_supplier",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "建立供應商",
+        "tags": [
+          "主檔與專案"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "contact": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "leadDays": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 365
+                  }
+                },
+                "required": [
+                  "name",
+                  "contact",
+                  "leadDays"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/suppliers/{id}": {
+      "patch": {
+        "operationId": "ResourcesController_updateSupplier",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "修改供應商",
+        "tags": [
+          "主檔與專案"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "contact": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "leadDays": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 365
+                  }
+                },
+                "required": [
+                  "name",
+                  "contact",
+                  "leadDays"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/materials": {
+      "post": {
+        "operationId": "ResourcesController_material",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "建立標準成本物料",
+        "tags": [
+          "主檔與專案"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sku": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "unitCostCents": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000000
+                  },
+                  "reorderPoint": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000
+                  }
+                },
+                "required": [
+                  "sku",
+                  "name",
+                  "unit",
+                  "unitCostCents",
+                  "reorderPoint"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/requests": {
+      "get": {
+        "operationId": "ProcurementController_requests",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "請購查詢，工程師限可存取專案",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ProcurementController_create",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "工程師建立並送出請購",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "lines": {
+                    "minItems": 1,
+                    "maxItems": 50,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "materialId": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 9007199254740991
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 100000
+                        }
+                      },
+                      "required": [
+                        "materialId",
+                        "quantity"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "title",
+                  "lines"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/requests/{id}": {
+      "get": {
+        "operationId": "ProcurementController_request",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "完整請購單據及簽核歷程",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/requests/{id}/resubmit": {
+      "patch": {
+        "operationId": "ProcurementController_resubmit",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "申請人修改退回單並重新送審",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "lines": {
+                    "minItems": 1,
+                    "maxItems": 50,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "materialId": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 9007199254740991
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 100000
+                        }
+                      },
+                      "required": [
+                        "materialId",
+                        "quantity"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "title",
+                  "lines"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/requests/{id}/approval": {
+      "post": {
+        "operationId": "ProcurementController_approve",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "同部門主管簽核；禁止自我簽核與非法狀態轉換",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVED",
+                      "RETURNED",
+                      "REJECTED"
+                    ]
+                  },
+                  "comment": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "decision",
+                  "comment"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/orders": {
+      "get": {
+        "operationId": "ProcurementController_orders",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "採購單、待收數量及收貨紀錄",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ProcurementController_createOrder",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "由已核准請購建立唯一採購單",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "requestId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "supplierId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "expectedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                  }
+                },
+                "required": [
+                  "requestId",
+                  "supplierId",
+                  "expectedAt"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/orders/{id}": {
+      "get": {
+        "operationId": "ProcurementController_order",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "追蹤採購及部分收貨",
+        "tags": [
+          "請購簽核與採購"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/orders/{id}/receipts": {
+      "post": {
+        "operationId": "InventoryController_receive",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "交易式部分收貨，重複請求 replay，防止超收",
+        "tags": [
+          "庫存交易"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "warehouseId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "lines": {
+                    "minItems": 1,
+                    "maxItems": 50,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "lineId": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 9007199254740991
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 100000
+                        }
+                      },
+                      "required": [
+                        "lineId",
+                        "quantity"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "warehouseId",
+                  "lines"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/issues": {
+      "post": {
+        "operationId": "InventoryController_issue",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "條件扣庫存與專案成本寫入同一交易",
+        "tags": [
+          "庫存交易"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "materialId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "warehouseId": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 9007199254740991
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": true,
+                    "maximum": 100000
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "materialId",
+                  "warehouseId",
+                  "quantity",
+                  "note"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/inventory": {
+      "get": {
+        "operationId": "InventoryController_stocks",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "庫存餘額與低庫存狀態",
+        "tags": [
+          "庫存交易"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/movements": {
+      "get": {
+        "operationId": "InventoryController_movements",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "分頁追蹤入庫及專案領料帳",
+        "tags": [
+          "庫存交易"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/dashboard": {
+      "get": {
+        "operationId": "ReportsController_dashboard",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "依角色計算工作台及近 90 天 KPI",
+        "tags": [
+          "工作台與報表"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/reports/costs": {
+      "get": {
+        "operationId": "ReportsController_costs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "管理者專案成本報表（可指定領料期間）",
+        "tags": [
+          "工作台與報表"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/audit": {
+      "get": {
+        "operationId": "ReportsController_audit",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "管理員稽核軌跡",
+        "tags": [
+          "工作台與報表"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/materials/import": {
+      "post": {
+        "operationId": "IntegrationsController_importMaterials",
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必須等於 APP_ORIGIN"
+          },
+          {
+            "name": "X-CSRF-Token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "由 login 或 me 回應取得"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "原子匯入 CSV 物料主檔，最多 500 列",
+        "tags": [
+          "CSV 與供應商整合"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "csv": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150000
+                  }
+                },
+                "required": [
+                  "csv"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/materials/export": {
+      "get": {
+        "operationId": "IntegrationsController_export",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "匯出防公式注入的物料 CSV",
+        "tags": [
+          "CSV 與供應商整合"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    },
+    "/api/integrations/supplier-quote": {
+      "get": {
+        "operationId": "IntegrationsController_quote",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "401": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "403": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "409": {
+            "description": "單據狀態／庫存／預算／重複請求衝突"
+          },
+          "429": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          },
+          "500": {
+            "description": "結構化錯誤：{ error: { code, message, requestId } }"
+          }
+        },
+        "summary": "對隔離模擬供應商 GET，timeout 600ms、最多兩次",
+        "tags": [
+          "CSV 與供應商整合"
+        ],
+        "security": [
+          {
+            "cookie": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "OpsFlow ERP API",
+    "description": "虛構工程企業的簽核、採購、庫存與成本交易；寫入請帶 Origin、X-CSRF-Token，收貨／領料需 Idempotency-Key。",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "opsflow_session"
+      }
+    },
+    "schemas": {}
+  }
+}

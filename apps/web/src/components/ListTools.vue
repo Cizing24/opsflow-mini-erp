@@ -14,16 +14,18 @@ defineEmits<{
 </script>
 <template>
   <form class="list-tools" @submit.prevent="$emit('search')">
-    <label class="search-field"
-      ><span class="sr-only">搜尋</span
-      ><input
+    <label class="search-field">
+      <span class="sr-only">搜尋</span>
+      <input
         :value="search"
         placeholder="搜尋單據或名稱…"
         type="search"
         @input="
           $emit('update:search', ($event.target as HTMLInputElement).value)
-        " /></label
-    ><select
+        "
+      />
+    </label>
+    <select
       v-if="statuses"
       aria-label="狀態篩選"
       :value="status"
@@ -36,8 +38,8 @@ defineEmits<{
       <option v-for="(label, value) in statuses" :key="value" :value="value">
         {{ label }}
       </option>
-</select
-    ><select
+    </select>
+    <select
       aria-label="排序"
       :value="sort"
       @change="
@@ -47,7 +49,8 @@ defineEmits<{
     >
       <option value="desc">最新在前</option>
       <option value="asc">最早在前</option>
-</select
-    ><el-button native-type="submit">查詢</el-button><slot />
+    </select>
+    <el-button native-type="submit">查詢</el-button>
+    <slot />
   </form>
 </template>

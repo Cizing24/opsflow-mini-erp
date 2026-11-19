@@ -30,53 +30,34 @@ onMounted(() => list.load());
         v-model:search="q"
         v-model:sort="sort"
         @search="list.load(true)"
-      /><el-table
+      />
+      <el-table
         v-loading="loading"
         :data="items"
         empty-text="沒有符合條件的稽核紀錄。"
-        >
-<el-table-column label="時間" min-width="170"
-          >
-<template #default="{ row }">
-{{
-            date(row.createdAt)
-          }}
-</template>
-</el-table-column
-        ><el-table-column label="操作人" width="100"
-          >
-<template #default="{ row }">
-{{
-            row.actor?.name ?? "系統"
-          }}
-</template>
-</el-table-column
-        ><el-table-column
-          prop="action"
-          label="操作"
-          min-width="220"
-        /><el-table-column
-          prop="entity"
-          label="關聯單據"
-          min-width="150"
-        /><el-table-column
-          prop="requestId"
-          label="Request ID"
-          min-width="320"
-        /><el-table-column label="詳細資料" min-width="280"
-          >
-<template #default="{ row }">
-{{
-            JSON.stringify(row.detail)
-          }}
-</template>
-</el-table-column
-        >
-</el-table
       >
+        <el-table-column label="時間" min-width="170">
+          <template #default="{ row }">
+            {{ date(row.createdAt) }}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作人" width="100">
+          <template #default="{ row }">
+            {{ row.actor?.name ?? "系統" }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="action" label="操作" min-width="220" />
+        <el-table-column prop="entity" label="關聯單據" min-width="150" />
+        <el-table-column prop="requestId" label="Request ID" min-width="320" />
+        <el-table-column label="詳細資料" min-width="280">
+          <template #default="{ row }">
+            {{ JSON.stringify(row.detail) }}
+          </template>
+        </el-table-column>
+      </el-table>
       <div class="pagination">
-        <span>共 {{ total }} 筆紀錄</span
-        ><el-pagination
+        <span>共 {{ total }} 筆紀錄</span>
+        <el-pagination
           v-model:current-page="page"
           :total="total"
           :page-size="10"

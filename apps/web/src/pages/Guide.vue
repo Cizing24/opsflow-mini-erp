@@ -57,8 +57,12 @@ const steps = [
       <p>
         右上角的登出按鈕可切換角色。各帳號為
         admin、manager、engineer、buyer、warehouse 加上
-        <code>@opsflow.test</code>；密碼由本機 <code>.env</code> 的
-        <code>DEMO_PASSWORD</code> 設定。
+        <code>@opsflow.test</code>
+        ；密碼由本機
+        <code>.env</code>
+        的
+        <code>DEMO_PASSWORD</code>
+        設定。
       </p>
       <p>
         請選擇預算餘額足夠的專案，採購 10 件物料、先收 4 件，再領 1

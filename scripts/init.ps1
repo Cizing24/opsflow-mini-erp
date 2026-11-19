@@ -7,6 +7,6 @@ if (!(Test-Path -LiteralPath '.env')) {
   $rootPass = [guid]::NewGuid().ToString('N')
   $content.Replace('DEMO_PASSWORD=', 'DEMO_PASSWORD=' + $demoPass).Replace('local-only-change-me',$dbPass).Replace('local-root-change-me',$rootPass) | Set-Content -LiteralPath '.env' -Encoding utf8
 }
-docker compose up -d --build
+docker compose up -d --build --wait
 if ($LASTEXITCODE -ne 0) { throw 'Docker Compose 啟動失敗，請先確認 Docker Desktop 正在運作。' }
 Write-Host 'OpsFlow 已啟動：http://localhost:3000。Demo 密碼位於 .env 的 DEMO_PASSWORD。'

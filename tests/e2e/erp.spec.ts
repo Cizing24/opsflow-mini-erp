@@ -187,3 +187,46 @@ test("角色隱藏操作且重新整理後 session 可延續", async ({ page }) 
     "此角色沒有執行此操作的權限",
   );
 });
+test("手機導覽隔離焦點且工作台保留所選單據 ID", async ({ page }) => {
+  await login(page, "admin");
+  const requestLink = page.locator('a.task-row[href*="requestId="]').first();
+  const target = await requestLink.getAttribute("href");
+  expect(target).toBeTruthy();
+  await requestLink.click();
+  await expect(page).toHaveURL(new RegExp(target!.replace("?", "\\?") + "$"));
+  await expect(
+    page.getByRole("dialog", { name: "請購單據追蹤" }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.goto(
+    "/orders?orderId=" +
+      (await (await page.request.get("/api/orders?sort=asc&pageSize=1")).json())
+        .items[0].id,
+  );
+  await expect(
+    page.getByRole("dialog", { name: "採購單據追蹤" }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/");
+  await expect(page.locator("#primary-sidebar")).toHaveAttribute("inert", "");
+  const toggle = page.getByRole("button", { name: "切換導覽" });
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  const close = page.getByRole("button", { name: "關閉導覽", exact: true });
+  await expect(close).toBeFocused();
+  await expect(close).toBeVisible();
+  await page.keyboard.press("Shift+Tab");
+  await expect(page.getByRole("link", { name: "API 文件" })).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(close).toBeFocused();
+  await page.screenshot({
+    path: ".impeccable/review/mobile-nav.png",
+    fullPage: true,
+    animations: "disabled",
+  });
+  await page.keyboard.press("Escape");
+  await expect(toggle).toBeFocused();
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator("#primary-sidebar")).toHaveAttribute("inert", "");
+});

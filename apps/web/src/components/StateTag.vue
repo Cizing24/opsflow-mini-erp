@@ -22,8 +22,6 @@ const tones: Record<
 </script>
 <template>
   <el-tag :type="tones[status] ?? 'info'" effect="light" size="small">
-{{
-    statusLabels[status] ?? status
-  }}
-</el-tag>
+    {{ statusLabels[status] ?? status }}
+  </el-tag>
 </template>

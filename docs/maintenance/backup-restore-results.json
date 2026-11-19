@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-19T19:27:21.883Z",
+  "source": "opsflow_demo",
+  "restoredInto": "opsflow_restore_624aa2d5c7",
+  "backupFile": "backups/opsflow-demo-1795116435089.sql",
+  "bytes": 61982,
+  "sha256": "c768e6e9b51ced3328dd385d889d744a2aee4804f17e34e8d05967297fa83707",
+  "validation": {
+    "issues": {
+      "negativeStock": 0,
+      "stockLedgerMismatch": 0,
+      "missingStock": 0,
+      "receiptMismatch": 0,
+      "movementMismatch": 0,
+      "stateMismatch": 0,
+      "approvalOrderMismatch": 0,
+      "negativeQuantity": 0
+    },
+    "counts": {
+      "projects": 5,
+      "users": 5,
+      "materials": 120,
+      "requests": 38,
+      "orders": 30,
+      "receipts": 20,
+      "movements": 60
+    }
+  },
+  "matched": true,
+  "sourceModified": false
+}

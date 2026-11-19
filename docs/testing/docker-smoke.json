@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-19T19:57:18.453Z",
+  "base": "http://localhost:3000",
+  "health": "ok",
+  "browserLogin": true,
+  "dashboardKpis": {
+    "averageApprovalHours": 15.67741935483871,
+    "pendingApprovals": 5,
+    "onTimeDeliveryRate": 0.8,
+    "partialReceiptRate": 0.3333333333333333,
+    "overdueCents": 8360947,
+    "actualCostCents": 8826708,
+    "inventoryTurnover": null,
+    "inventoryTurnoverReason": "尚無期初與期末庫存估值快照，無法計算期間平均庫存成本",
+    "anomalyCount": 22
+  },
+  "source": "Docker Compose app and MySQL; real Chromium"
+}

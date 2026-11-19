@@ -38,8 +38,9 @@ function random(max: number) {
   state ^= state << 5;
   return (state >>> 0) % max;
 }
-const anchor = new Date(option("as-of", "2026-11-20T04:00:00Z"));
-if (Number.isNaN(anchor.getTime())) throw new Error("Invalid --as-of date");
+const anchor = new Date(option("as-of", "2026-11-19T00:00:00Z"));
+if (Number.isNaN(anchor.getTime()) || anchor.getTime() > Date.now())
+  throw new Error("--as-of must be a valid non-future date");
 const day = (offset: number) => new Date(anchor.getTime() + offset * 86400000);
 try {
   if (args.includes("--reset")) {
@@ -207,7 +208,12 @@ try {
         ),
         completedAt =
           bucket === 2
-            ? new Date(expectedAt.getTime() + (i % 4 === 0 ? 2 : -1) * 86400000)
+            ? new Date(
+                Math.min(
+                  anchor.getTime(),
+                  expectedAt.getTime() + (i % 4 === 0 ? 2 : -1) * 86400000,
+                ),
+              )
             : null;
       await db.$transaction(async (tx) => {
         const request = await tx.purchaseRequest.create({

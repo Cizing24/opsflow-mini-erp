@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T19:43:34.643164+00:00",
+  "title": "Design System: OpsFlow ERP",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "營運青綠",
+        "tonalRamp": [
+          "oklch(15% 0.0800 198.76)",
+          "oklch(26% 0.0800 198.76)",
+          "oklch(38% 0.0907 198.76)",
+          "oklch(49% 0.0907 198.76)",
+          "oklch(61% 0.0907 198.76)",
+          "oklch(72% 0.0907 198.76)",
+          "oklch(84% 0.0907 198.76)",
+          "oklch(95% 0.0350 198.76)"
+        ]
+      },
+      "nav": {
+        "role": "primary",
+        "displayName": "深海藍",
+        "tonalRamp": [
+          "oklch(15% 0.0502 232.60)",
+          "oklch(26% 0.0502 232.60)",
+          "oklch(38% 0.0502 232.60)",
+          "oklch(49% 0.0502 232.60)",
+          "oklch(61% 0.0502 232.60)",
+          "oklch(72% 0.0502 232.60)",
+          "oklch(84% 0.0502 232.60)",
+          "oklch(95% 0.0350 232.60)"
+        ]
+      },
+      "nav-hover": {
+        "role": "neutral",
+        "displayName": "nav-hover",
+        "tonalRamp": [
+          "oklch(15% 0.0510 227.63)",
+          "oklch(26% 0.0510 227.63)",
+          "oklch(38% 0.0510 227.63)",
+          "oklch(49% 0.0510 227.63)",
+          "oklch(61% 0.0510 227.63)",
+          "oklch(72% 0.0510 227.63)",
+          "oklch(84% 0.0510 227.63)",
+          "oklch(95% 0.0350 227.63)"
+        ]
+      },
+      "nav-selected": {
+        "role": "neutral",
+        "displayName": "nav-selected",
+        "tonalRamp": [
+          "oklch(15% 0.0686 210.23)",
+          "oklch(26% 0.0686 210.23)",
+          "oklch(38% 0.0686 210.23)",
+          "oklch(49% 0.0686 210.23)",
+          "oklch(61% 0.0686 210.23)",
+          "oklch(72% 0.0686 210.23)",
+          "oklch(84% 0.0686 210.23)",
+          "oklch(95% 0.0350 210.23)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "正文墨色",
+        "tonalRamp": [
+          "oklch(15% 0.0349 233.09)",
+          "oklch(26% 0.0349 233.09)",
+          "oklch(38% 0.0349 233.09)",
+          "oklch(49% 0.0349 233.09)",
+          "oklch(61% 0.0349 233.09)",
+          "oklch(72% 0.0349 233.09)",
+          "oklch(84% 0.0349 233.09)",
+          "oklch(95% 0.0349 233.09)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "次要藍灰",
+        "tonalRamp": [
+          "oklch(15% 0.0303 230.86)",
+          "oklch(26% 0.0303 230.86)",
+          "oklch(38% 0.0303 230.86)",
+          "oklch(49% 0.0303 230.86)",
+          "oklch(61% 0.0303 230.86)",
+          "oklch(72% 0.0303 230.86)",
+          "oklch(84% 0.0303 230.86)",
+          "oklch(95% 0.0303 230.86)"
+        ]
+      },
+      "regular": {
+        "role": "neutral",
+        "displayName": "regular",
+        "tonalRamp": [
+          "oklch(15% 0.0348 231.46)",
+          "oklch(26% 0.0348 231.46)",
+          "oklch(38% 0.0348 231.46)",
+          "oklch(49% 0.0348 231.46)",
+          "oklch(61% 0.0348 231.46)",
+          "oklch(72% 0.0348 231.46)",
+          "oklch(84% 0.0348 231.46)",
+          "oklch(95% 0.0348 231.46)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "工作底色",
+        "tonalRamp": [
+          "oklch(15% 0.0042 236.50)",
+          "oklch(26% 0.0042 236.50)",
+          "oklch(38% 0.0042 236.50)",
+          "oklch(49% 0.0042 236.50)",
+          "oklch(61% 0.0042 236.50)",
+          "oklch(72% 0.0042 236.50)",
+          "oklch(84% 0.0042 236.50)",
+          "oklch(95% 0.0042 236.50)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "白色資料面",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "line",
+        "tonalRamp": [
+          "oklch(15% 0.0111 225.99)",
+          "oklch(26% 0.0111 225.99)",
+          "oklch(38% 0.0111 225.99)",
+          "oklch(49% 0.0111 225.99)",
+          "oklch(61% 0.0111 225.99)",
+          "oklch(72% 0.0111 225.99)",
+          "oklch(84% 0.0111 225.99)",
+          "oklch(95% 0.0111 225.99)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "field-border",
+        "tonalRamp": [
+          "oklch(15% 0.0207 229.09)",
+          "oklch(26% 0.0207 229.09)",
+          "oklch(38% 0.0207 229.09)",
+          "oklch(49% 0.0207 229.09)",
+          "oklch(61% 0.0207 229.09)",
+          "oklch(72% 0.0207 229.09)",
+          "oklch(84% 0.0207 229.09)",
+          "oklch(95% 0.0207 229.09)"
+        ]
+      },
+      "control-border": {
+        "role": "neutral",
+        "displayName": "control-border",
+        "tonalRamp": [
+          "oklch(15% 0.0164 227.00)",
+          "oklch(26% 0.0164 227.00)",
+          "oklch(38% 0.0164 227.00)",
+          "oklch(49% 0.0164 227.00)",
+          "oklch(61% 0.0164 227.00)",
+          "oklch(72% 0.0164 227.00)",
+          "oklch(84% 0.0164 227.00)",
+          "oklch(95% 0.0164 227.00)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "focus",
+        "tonalRamp": [
+          "oklch(15% 0.0800 188.48)",
+          "oklch(26% 0.0800 188.48)",
+          "oklch(38% 0.1181 188.48)",
+          "oklch(49% 0.1181 188.48)",
+          "oklch(61% 0.1181 188.48)",
+          "oklch(72% 0.1181 188.48)",
+          "oklch(84% 0.1181 188.48)",
+          "oklch(95% 0.0350 188.48)"
+        ]
+      },
+      "success": {
+        "role": "semantic",
+        "displayName": "核准綠",
+        "tonalRamp": [
+          "oklch(15% 0.0800 158.00)",
+          "oklch(26% 0.0800 158.00)",
+          "oklch(38% 0.0966 158.00)",
+          "oklch(49% 0.0966 158.00)",
+          "oklch(61% 0.0966 158.00)",
+          "oklch(72% 0.0966 158.00)",
+          "oklch(84% 0.0966 158.00)",
+          "oklch(95% 0.0350 158.00)"
+        ]
+      },
+      "warning": {
+        "role": "semantic",
+        "displayName": "待辦赭黃",
+        "tonalRamp": [
+          "oklch(15% 0.0800 69.13)",
+          "oklch(26% 0.0800 69.13)",
+          "oklch(38% 0.1113 69.13)",
+          "oklch(49% 0.1113 69.13)",
+          "oklch(61% 0.1113 69.13)",
+          "oklch(72% 0.1113 69.13)",
+          "oklch(84% 0.1113 69.13)",
+          "oklch(95% 0.0350 69.13)"
+        ]
+      },
+      "danger": {
+        "role": "semantic",
+        "displayName": "拒絕紅",
+        "tonalRamp": [
+          "oklch(15% 0.0800 22.06)",
+          "oklch(26% 0.0800 22.06)",
+          "oklch(38% 0.1200 22.06)",
+          "oklch(49% 0.1200 22.06)",
+          "oklch(61% 0.1200 22.06)",
+          "oklch(72% 0.1200 22.06)",
+          "oklch(84% 0.1200 22.06)",
+          "oklch(95% 0.0350 22.06)"
+        ]
+      },
+      "info": {
+        "role": "semantic",
+        "displayName": "資訊藍灰",
+        "tonalRamp": [
+          "oklch(15% 0.0313 229.70)",
+          "oklch(26% 0.0313 229.70)",
+          "oklch(38% 0.0313 229.70)",
+          "oklch(49% 0.0313 229.70)",
+          "oklch(61% 0.0313 229.70)",
+          "oklch(72% 0.0313 229.70)",
+          "oklch(84% 0.0313 229.70)",
+          "oklch(95% 0.0313 229.70)"
+        ]
+      },
+      "attention-bg": {
+        "role": "semantic",
+        "displayName": "attention-bg",
+        "tonalRamp": [
+          "oklch(15% 0.0199 84.59)",
+          "oklch(26% 0.0199 84.59)",
+          "oklch(38% 0.0199 84.59)",
+          "oklch(49% 0.0199 84.59)",
+          "oklch(61% 0.0199 84.59)",
+          "oklch(72% 0.0199 84.59)",
+          "oklch(84% 0.0199 84.59)",
+          "oklch(95% 0.0199 84.59)"
+        ]
+      },
+      "attention-border": {
+        "role": "semantic",
+        "displayName": "attention-border",
+        "tonalRamp": [
+          "oklch(15% 0.0566 85.56)",
+          "oklch(26% 0.0566 85.56)",
+          "oklch(38% 0.0566 85.56)",
+          "oklch(49% 0.0566 85.56)",
+          "oklch(61% 0.0566 85.56)",
+          "oklch(72% 0.0566 85.56)",
+          "oklch(84% 0.0566 85.56)",
+          "oklch(95% 0.0350 85.56)"
+        ]
+      },
+      "attention-ink": {
+        "role": "semantic",
+        "displayName": "attention-ink",
+        "tonalRamp": [
+          "oklch(15% 0.0800 71.52)",
+          "oklch(26% 0.0800 71.52)",
+          "oklch(38% 0.0825 71.52)",
+          "oklch(49% 0.0825 71.52)",
+          "oklch(61% 0.0825 71.52)",
+          "oklch(72% 0.0825 71.52)",
+          "oklch(84% 0.0825 71.52)",
+          "oklch(95% 0.0350 71.52)"
+        ]
+      },
+      "table-header": {
+        "role": "neutral",
+        "displayName": "table-header",
+        "tonalRamp": [
+          "oklch(15% 0.0042 236.50)",
+          "oklch(26% 0.0042 236.50)",
+          "oklch(38% 0.0042 236.50)",
+          "oklch(49% 0.0042 236.50)",
+          "oklch(61% 0.0042 236.50)",
+          "oklch(72% 0.0042 236.50)",
+          "oklch(84% 0.0042 236.50)",
+          "oklch(95% 0.0042 236.50)"
+        ]
+      },
+      "table-border": {
+        "role": "neutral",
+        "displayName": "table-border",
+        "tonalRamp": [
+          "oklch(15% 0.0076 228.86)",
+          "oklch(26% 0.0076 228.86)",
+          "oklch(38% 0.0076 228.86)",
+          "oklch(49% 0.0076 228.86)",
+          "oklch(61% 0.0076 228.86)",
+          "oklch(72% 0.0076 228.86)",
+          "oklch(84% 0.0076 228.86)",
+          "oklch(95% 0.0076 228.86)"
+        ]
+      },
+      "row-hover": {
+        "role": "neutral",
+        "displayName": "row-hover",
+        "tonalRamp": [
+          "oklch(15% 0.0045 214.33)",
+          "oklch(26% 0.0045 214.33)",
+          "oklch(38% 0.0045 214.33)",
+          "oklch(49% 0.0045 214.33)",
+          "oklch(61% 0.0045 214.33)",
+          "oklch(72% 0.0045 214.33)",
+          "oklch(84% 0.0045 214.33)",
+          "oklch(95% 0.0045 214.33)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "display",
+        "purpose": "登入故事標題"
+      },
+      "headline": {
+        "displayName": "headline",
+        "purpose": "主要作業頁 h1"
+      },
+      "title": {
+        "displayName": "title",
+        "purpose": "內容面板 h2"
+      },
+      "body": {
+        "displayName": "body",
+        "purpose": "全域根字級"
+      },
+      "paragraph": {
+        "displayName": "paragraph",
+        "purpose": "段落行高"
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "摘要及表格文字"
+      },
+      "metric": {
+        "displayName": "metric",
+        "purpose": "數據摘要，使用 tabular-nums"
+      }
+    },
+    "shadows": [
+      {
+        "name": "mobile-nav-open",
+        "value": "8px 0 28px #13364733",
+        "purpose": "700px 以下，行動側欄展開時。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "mobile-nav",
+        "value": "transform 0.18s ease-out",
+        "purpose": "行動側欄滑入與收合。"
+      },
+      {
+        "name": "element-button",
+        "value": "all .1s",
+        "purpose": "套件按鈕 hover 與 active；保留實際套件衍生色變數。"
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none !important; animation: none !important; scroll-behavior: auto !important",
+        "purpose": "prefers-reduced-motion: reduce 時套用。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      },
+      {
+        "name": "compact-max",
+        "value": "1200px"
+      },
+      {
+        "name": "single-column-max",
+        "value": "950px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "700px"
+      }
+    ],
+    "notes": [
+      "Tonal ramps 為色票面板產生的 OKLCH 預覽延伸，並非已實作的 CSS tokens；實際顏色以 DESIGN.md frontmatter 與 CSS 為準。",
+      "元件 snippet 使用既有 CSS custom properties，fallback 取自專案或已安裝 Element Plus；互動摘要描述程式實作，不代替 E2E 結果。"
+    ]
+  },
+  "components": [
+    {
+      "name": "主要動作",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Element Plus primary 按鈕；狀態使用套件衍生變數。",
+      "html": "<button class=\"ds-primary\">提交請購</button>",
+      "css": ".ds-primary{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;font-size:14px;font-weight:500;line-height:1;height:32px;padding:8px 15px;border-radius:6px;border:1px solid var(--el-color-primary,#087f83);background:var(--el-color-primary,#087f83);color:#fff;cursor:pointer;transition:all .1s}.ds-primary:hover{background:var(--el-color-primary-light-3,#79bbff);border-color:var(--el-color-primary-light-3,#79bbff)}.ds-primary:active{background:var(--el-color-primary-dark-2,#337ecc);border-color:var(--el-color-primary-dark-2,#337ecc)}.ds-primary:focus-visible{outline:2px solid var(--el-color-primary-light-5,#a0cfff);outline-offset:1px}.ds-primary:disabled{background:var(--el-color-primary-light-5,#a0cfff);border-color:var(--el-color-primary-light-5,#a0cfff);cursor:not-allowed}"
+    },
+    {
+      "name": "一般動作",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "白底描邊的更新等次要動作。",
+      "html": "<button class=\"ds-default\">更新資料</button>",
+      "css": ".ds-default{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;font-size:14px;font-weight:500;line-height:1;height:32px;padding:8px 15px;border-radius:6px;border:1px solid var(--el-border-color,#c9d6dc);background:#fff;color:var(--el-text-color-regular,#344b57);cursor:pointer;transition:all .1s}.ds-default:hover{color:var(--el-color-primary,#087f83);background:var(--el-color-primary-light-9,#ecf5ff);border-color:var(--el-color-primary-light-7,#c6e2ff)}.ds-default:active{border-color:var(--el-color-primary,#087f83)}.ds-default:focus-visible{outline:2px solid var(--el-color-primary-light-5,#a0cfff);outline-offset:1px}"
+    },
+    {
+      "name": "作業欄位",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "原生輸入欄位與獨立 label。",
+      "html": "<label class=\"ds-label\" for=\"ds-search\">搜尋單據</label><input id=\"ds-search\" class=\"ds-field\" placeholder=\"輸入單據編號\" />",
+      "css": ".ds-label{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;display:block;font-size:13px;font-weight:550;margin-bottom:9px;color:var(--ink,#243a46)}.ds-field{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;font-size:14px;color:var(--ink,#243a46);border:1px solid #bdcdd5;background:#fff;border-radius:6px;padding:10px 12px;min-height:42px;max-width:100%;caret-color:var(--accent,#087f83)}.ds-field::placeholder{color:#627781}.ds-field:focus{outline:2px solid var(--accent,#087f83);outline-offset:2px}"
+    },
+    {
+      "name": "主要導覽",
+      "kind": "nav",
+      "refersTo": "nav-selected",
+      "description": "深藍側欄中的目前位置與一般項目。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"主要導覽\"><a class=\"ds-selected\" href=\"#\" aria-current=\"page\">營運工作台</a><a href=\"#\">工程專案</a></nav>",
+      "css": ".ds-nav{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;background:var(--nav,#133647);padding:16px;display:flex;flex-direction:column;gap:7px;width:200px}.ds-nav a{font-size:14px;display:flex;gap:13px;padding:12px 14px;border-radius:6px;color:#d3e1e6;text-decoration:none}.ds-nav a:hover{background:#254b5b;color:#fff}.ds-nav a.ds-selected{background:#1d626d;color:#fff;font-weight:600}.ds-nav a:focus-visible{outline:3px solid var(--focus,#20b9b0);outline-offset:3px;}"
+    },
+    {
+      "name": "狀態標籤",
+      "kind": "chip",
+      "refersTo": "status-tag",
+      "description": "Element Plus light small tag，文字保留真實狀態。",
+      "html": "<span class=\"ds-tag\">待審核</span>",
+      "css": ".ds-tag{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;display:inline-flex;align-items:center;justify-content:center;font-size:12px;line-height:1;height:20px;padding:0 7px;border-radius:4px;border:1px solid var(--el-color-warning-light-8,#faecd8);background:var(--el-color-warning-light-9,#fdf6ec);color:var(--el-color-warning,#9b6417);white-space:nowrap}"
+    },
+    {
+      "name": "資料面板",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "白底、細線與小圓角提供平面層級。",
+      "html": "<section class=\"ds-panel\"><h2>待辦與簽核</h2><p>目前沒有待審核案件。</p></section>",
+      "css": ".ds-panel{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;background:var(--surface,#fff);border:1px solid var(--line,#dce5e9);border-radius:8px;overflow:hidden;color:var(--ink,#243a46)}.ds-panel h2{font-size:17px;font-weight:650;line-height:1.5;margin:0;padding:21px 24px 16px}.ds-panel p{font-size:13px;color:var(--muted,#5b707b);margin:0;padding:32px;text-align:center}"
+    },
+    {
+      "name": "營運提醒",
+      "kind": "custom",
+      "refersTo": "attention",
+      "description": "具語意底色及文字說明的注意事項。",
+      "html": "<aside class=\"ds-attention\"><div><strong>有營運提醒需要留意</strong><p>檢查逾期待收、低庫存與預算警示。</p></div><a href=\"#\">檢視採購單 →</a></aside>",
+      "css": ".ds-attention{font-family:\"Segoe UI\",\"Microsoft JhengHei\",sans-serif;display:flex;justify-content:space-between;align-items:center;gap:18px;background:#fff8ea;border:1px solid #ead7af;border-radius:7px;padding:16px 21px;color:#75501d}.ds-attention strong{font-size:13px}.ds-attention p{font-size:12px;line-height:1.8;margin:4px 0 0;color:#7c5d31}.ds-attention a{font-size:12px;color:#7a541a;white-space:nowrap;text-decoration:none}.ds-attention a:hover{text-decoration:underline}.ds-attention a:focus-visible{outline:3px solid var(--focus,#20b9b0);outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "工程營運工作區",
+    "overview": "明亮的企業作業介面，以深藍固定側欄提供位置感，青綠連結及主要動作引導下一步。白色內容面與淡灰藍工作底色分層，資訊透過標題、細邊框、單據編號及狀態文字排列，保持長時間閱讀表格所需的清楚秩序。\n\n繁體中文採系統無襯線字型，狀態保留文字標籤，數據和金額使用清楚的大小層級。元件以 Element Plus 為基礎，搭配原生欄位及自訂作業面板；不以額外裝飾取代作業內容。",
+    "keyCharacteristics": [
+      "明亮工作底色、白色面板與深藍導覽。",
+      "青綠動作、具文字的語意狀態與可追蹤單據。",
+      "緊湊表格、柔和小圓角與清楚鍵盤焦點。"
+    ],
+    "rules": [],
+    "dos": [
+      "**Do** 沿用深藍側欄、明亮工作底色與白色資料面板。",
+      "**Do** 以繁中狀態文字、單據編號、數值與明確焦點支援辨識及鍵盤操作。",
+      "**Do** 沿用既有 Element Plus 控制項及響應式斷點，保留表格水平捲動。"
+    ],
+    "donts": [
+      "**Don't** 把狀態簡化為只有色點或只有進度條。",
+      "**Don't** 讓主要內容面板增加常駐裝飾陰影或 overlay 模糊效果。",
+      "**Don't** 將未實測的畫面、互動或裝置宣稱已通過驗證。"
+    ]
+  }
+}

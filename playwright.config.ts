@@ -8,7 +8,6 @@ export default defineConfig({
   workers: 1,
   retries: 0,
   timeout: 45000,
-  globalSetup: "./tests/e2e/setup.ts",
   reporter: [
     ["list"],
     ["json", { outputFile: "test-results/e2e-raw.json" }],

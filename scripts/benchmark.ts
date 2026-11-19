@@ -167,6 +167,13 @@ try {
       ).trim(),
     },
     dataset: validation,
+    datasetSeed: (
+      await db.auditLog.findFirst({
+        where: { action: "SEED_COMPLETE" },
+        orderBy: { id: "desc" },
+        select: { detail: true },
+      })
+    )?.detail,
     load: {
       samplesPerScenario: 120,
       concurrency: [1, 4, 16],

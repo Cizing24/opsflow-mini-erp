@@ -145,6 +145,14 @@ export class ErrorFilter implements ExceptionFilter {
       status = error.getStatus();
       message = error.message;
       code = `HTTP_${status}`;
+    } else if (
+      error instanceof Error &&
+      "type" in error &&
+      error.type === "entity.too.large"
+    ) {
+      status = 413;
+      message = "請求內容超過 200KB 上限，請減少資料後重試";
+      code = "PAYLOAD_TOO_LARGE";
     } else if (error instanceof ZodError) {
       status = 400;
       message = error.issues

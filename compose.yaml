@@ -1,0 +1,41 @@
+name: opsflow
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: opsflow_demo
+      MYSQL_USER: opsflow
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD}
+    ports: ["127.0.0.1:3307:3306"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_PASSWORD mysql -uopsflow -e 'SELECT 1' opsflow_demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  app:
+    image: opsflow-mini-erp:local
+    build: .
+    environment:
+      DATABASE_URL: mysql://opsflow:${MYSQL_PASSWORD}@db:3306/opsflow_demo
+      APP_ORIGIN: http://localhost:3000
+      PORT: 3000
+      NODE_ENV: development
+      DEMO_PASSWORD: ${DEMO_PASSWORD:?Set DEMO_PASSWORD}
+      SUPPLIER_API_URL: http://supplier:3010
+    ports: ["127.0.0.1:3000:3000"]
+    depends_on:
+      db: {condition: service_healthy}
+      supplier: {condition: service_started}
+    command: ["sh", "-c", "npm run db:migrate && npm run seed -- --mode guided && npm run start -w @opsflow/api"]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  supplier:
+    image: opsflow-mini-erp:local
+    command: ["node", "scripts/supplier-mock.mjs"]
+volumes:
+  mysql-data:

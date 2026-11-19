@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { spawnSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
+import setup from "../tests/e2e/setup.js";
 interface RawResult {
   status: string;
   duration: number;
@@ -11,6 +12,7 @@ interface RawSuite {
   suites?: RawSuite[];
   specs?: { title: string; tests: { results: RawResult[] }[] }[];
 }
+setup();
 const result = spawnSync(
   process.execPath,
   ["node_modules/@playwright/test/cli.js", "test", ...process.argv.slice(2)],
