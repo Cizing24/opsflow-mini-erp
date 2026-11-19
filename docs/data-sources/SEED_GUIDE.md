@@ -25,3 +25,5 @@ node --import tsx scripts/test-database.ts --setup --benchmark --reset
 Seed 只允許 opsflow_demo、opsflow_test、opsflow_e2e、opsflow_benchmark。重置需完整 DB 名稱確認；Benchmark 只允許 opsflow_benchmark。HTTP 沒有重置入口。測試 runner 明確指定測試 DB，且 Integration 與 E2E 各用不同 DB。
 
 相同 seed 與日期產生相同業務內容、單號、數量、價格與狀態；auto-increment ID、密碼 salt、執行 Audit 時間不保證相同。生成中的失敗會留下可檢查的未完成資料；修復後需明確 reset 重跑，不會偷偷接續或覆寫。
+
+DEMO_PASSWORD 只在初始化帳號時使用；已有資料時改動環境值不會自動更換密碼。請保留原值，或在確認合成資料可刪除後受控 reset；本版本沒有線上密碼變更／重設介面。

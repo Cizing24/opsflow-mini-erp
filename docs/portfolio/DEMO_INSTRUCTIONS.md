@@ -13,3 +13,5 @@
 網站的「操作導覽」提供相同流程。不要在正在展示的資料庫執行 reset 或 benchmark；需重新開始時先停止操作，再使用明確 confirm 的 CLI。
 
 Screenshots 在 docs/screenshots，來自真實 Chromium 的合成測試企業，並非設計 Mock。桌面與行動畫面分別為 desktop.png、mobile.png；視覺審查範圍詳 docs/design/ui-review.md。
+
+截圖取自完成測試交易後的 opsflow_e2e，與 demo-kpis.json 的 Guided 初始化快照可能不同；兩者不是同一時間點的資料。

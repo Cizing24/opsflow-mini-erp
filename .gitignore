@@ -16,3 +16,5 @@ tests/.generated/
 .impeccable/questions/
 .impeccable/review/
 .impeccable/live/
+docs/testing/ci-artifacts/
+__pycache__/

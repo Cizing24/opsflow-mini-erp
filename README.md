@@ -55,6 +55,9 @@ Guided 初始有 20 個合成物料；本次本機另實際匯入 100 個 UCI �
 ERP 不依賴公開下載；可選擇離線重建：
 
 ```powershell
+npm ci
+npm run db:generate
+npm run build -w @opsflow/shared
 python data/generators/prepare-uci.py
 npm run data:public
 ```
