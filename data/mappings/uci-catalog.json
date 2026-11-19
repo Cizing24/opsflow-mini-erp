@@ -1,0 +1,902 @@
+[
+  {
+    "sku": "UCI-10002",
+    "name": "INFLATABLE POLITICAL GLOBE",
+    "unit": "件",
+    "unitCostCents": 5776,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10002"
+  },
+  {
+    "sku": "UCI-10080",
+    "name": "GROOVY CACTUS INFLATABLE",
+    "unit": "件",
+    "unitCostCents": 35768,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10080"
+  },
+  {
+    "sku": "UCI-10120",
+    "name": "DOGGY RUBBER",
+    "unit": "件",
+    "unitCostCents": 40629,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10120"
+  },
+  {
+    "sku": "UCI-10123C",
+    "name": "HEARTS WRAPPING TAPE",
+    "unit": "件",
+    "unitCostCents": 30802,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10123C"
+  },
+  {
+    "sku": "UCI-10124A",
+    "name": "SPOTS ON RED BOOKCOVER TAPE",
+    "unit": "件",
+    "unitCostCents": 8534,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10124A"
+  },
+  {
+    "sku": "UCI-10124G",
+    "name": "ARMY CAMO BOOKCOVER TAPE",
+    "unit": "件",
+    "unitCostCents": 46576,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10124G"
+  },
+  {
+    "sku": "UCI-10125",
+    "name": "MINI FUNKY DESIGN TAPES",
+    "unit": "件",
+    "unitCostCents": 3872,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10125"
+  },
+  {
+    "sku": "UCI-10133",
+    "name": "COLOURING PENCILS BROWN TUBE",
+    "unit": "件",
+    "unitCostCents": 45880,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10133"
+  },
+  {
+    "sku": "UCI-10135",
+    "name": "COLOURING PENCILS BROWN TUBE",
+    "unit": "件",
+    "unitCostCents": 44016,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:10135"
+  },
+  {
+    "sku": "UCI-11001",
+    "name": "ASSTD DESIGN RACING CAR PEN",
+    "unit": "件",
+    "unitCostCents": 7884,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:11001"
+  },
+  {
+    "sku": "UCI-15030",
+    "name": "FAN BLACK FRAME",
+    "unit": "件",
+    "unitCostCents": 24522,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15030"
+  },
+  {
+    "sku": "UCI-15034",
+    "name": "PAPER POCKET TRAVELING FAN",
+    "unit": "件",
+    "unitCostCents": 8166,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15034"
+  },
+  {
+    "sku": "UCI-15036",
+    "name": "ASSORTED COLOURS SILK FAN",
+    "unit": "件",
+    "unitCostCents": 43840,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15036"
+  },
+  {
+    "sku": "UCI-15039",
+    "name": "SANDALWOOD FAN",
+    "unit": "件",
+    "unitCostCents": 40280,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15039"
+  },
+  {
+    "sku": "UCI-15044A",
+    "name": "PINK PAPER PARASOL",
+    "unit": "件",
+    "unitCostCents": 32154,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15044A"
+  },
+  {
+    "sku": "UCI-15044B",
+    "name": "BLUE PAPER PARASOL",
+    "unit": "件",
+    "unitCostCents": 30382,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15044B"
+  },
+  {
+    "sku": "UCI-15044C",
+    "name": "PURPLE PAPER PARASOL",
+    "unit": "件",
+    "unitCostCents": 9385,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15044C"
+  },
+  {
+    "sku": "UCI-15044D",
+    "name": "RED PAPER PARASOL",
+    "unit": "件",
+    "unitCostCents": 28546,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15044D"
+  },
+  {
+    "sku": "UCI-15056N",
+    "name": "EDWARDIAN PARASOL NATURAL",
+    "unit": "件",
+    "unitCostCents": 7057,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15056N"
+  },
+  {
+    "sku": "UCI-15056P",
+    "name": "EDWARDIAN PARASOL PINK",
+    "unit": "件",
+    "unitCostCents": 22316,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15056P"
+  },
+  {
+    "sku": "UCI-15058A",
+    "name": "BLUE POLKADOT GARDEN PARASOL",
+    "unit": "件",
+    "unitCostCents": 25688,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15058A"
+  },
+  {
+    "sku": "UCI-15058B",
+    "name": "PINK POLKADOT GARDEN PARASOL",
+    "unit": "件",
+    "unitCostCents": 44396,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15058B"
+  },
+  {
+    "sku": "UCI-15058C",
+    "name": "ICE CREAM DESIGN GARDEN PARASOL",
+    "unit": "件",
+    "unitCostCents": 25333,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15058C"
+  },
+  {
+    "sku": "UCI-15060B",
+    "name": "FAIRY CAKE DESIGN UMBRELLA",
+    "unit": "件",
+    "unitCostCents": 22159,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:15060B"
+  },
+  {
+    "sku": "UCI-16008",
+    "name": "SMALL FOLDING SCISSOR(POINTED EDGE)",
+    "unit": "件",
+    "unitCostCents": 9276,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16008"
+  },
+  {
+    "sku": "UCI-16010",
+    "name": "FOLDING CAMPING SCISSOR W/KNIF & S",
+    "unit": "件",
+    "unitCostCents": 27752,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16010"
+  },
+  {
+    "sku": "UCI-16011",
+    "name": "ANIMAL STICKERS",
+    "unit": "件",
+    "unitCostCents": 6965,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16011"
+  },
+  {
+    "sku": "UCI-16012",
+    "name": "FOOD/DRINK SPONGE STICKERS",
+    "unit": "件",
+    "unitCostCents": 28263,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16012"
+  },
+  {
+    "sku": "UCI-16014",
+    "name": "SMALL CHINESE STYLE SCISSOR",
+    "unit": "件",
+    "unitCostCents": 4757,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16014"
+  },
+  {
+    "sku": "UCI-16015",
+    "name": "MEDIUM CHINESE STYLE SCISSOR",
+    "unit": "件",
+    "unitCostCents": 22912,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16015"
+  },
+  {
+    "sku": "UCI-16016",
+    "name": "LARGE CHINESE STYLE SCISSOR",
+    "unit": "件",
+    "unitCostCents": 48257,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16016"
+  },
+  {
+    "sku": "UCI-16020C",
+    "name": "CLEAR STATIONERY BOX SET",
+    "unit": "件",
+    "unitCostCents": 14498,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16020C"
+  },
+  {
+    "sku": "UCI-16033",
+    "name": "MINI HIGHLIGHTER PENS",
+    "unit": "件",
+    "unitCostCents": 29333,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16033"
+  },
+  {
+    "sku": "UCI-16043",
+    "name": "POP ART PUSH DOWN RUBBER",
+    "unit": "件",
+    "unitCostCents": 28310,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16043"
+  },
+  {
+    "sku": "UCI-16045",
+    "name": "POPART WOODEN PENCILS ASST",
+    "unit": "件",
+    "unitCostCents": 1053,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16045"
+  },
+  {
+    "sku": "UCI-16046",
+    "name": "TEATIME PEN CASE & PENS",
+    "unit": "件",
+    "unitCostCents": 19016,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16046"
+  },
+  {
+    "sku": "UCI-16048",
+    "name": "TEATIME ROUND PENCIL SHARPENER",
+    "unit": "件",
+    "unitCostCents": 10911,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16048"
+  },
+  {
+    "sku": "UCI-16049",
+    "name": "TEATIME GEL PENS ASST",
+    "unit": "件",
+    "unitCostCents": 36612,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16049"
+  },
+  {
+    "sku": "UCI-16052",
+    "name": "TEATIME PUSH DOWN RUBBER",
+    "unit": "件",
+    "unitCostCents": 10416,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16052"
+  },
+  {
+    "sku": "UCI-16054",
+    "name": "POPART RECT PENCIL SHARPENER ASST",
+    "unit": "件",
+    "unitCostCents": 7860,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16054"
+  },
+  {
+    "sku": "UCI-16151A",
+    "name": "FLOWERS HANDBAG blue and orange",
+    "unit": "件",
+    "unitCostCents": 26540,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16151A"
+  },
+  {
+    "sku": "UCI-16156L",
+    "name": "WRAP, CAROUSEL",
+    "unit": "件",
+    "unitCostCents": 10123,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16156L"
+  },
+  {
+    "sku": "UCI-16156S",
+    "name": "WRAP PINK FAIRY CAKES",
+    "unit": "件",
+    "unitCostCents": 35343,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16156S"
+  },
+  {
+    "sku": "UCI-16161G",
+    "name": "WRAP BAD HAIR DAY",
+    "unit": "件",
+    "unitCostCents": 25239,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16161G"
+  },
+  {
+    "sku": "UCI-16161M",
+    "name": "WRAP  PINK FLOCK",
+    "unit": "件",
+    "unitCostCents": 26336,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16161M"
+  },
+  {
+    "sku": "UCI-16161P",
+    "name": "WRAP ENGLISH ROSE",
+    "unit": "件",
+    "unitCostCents": 44086,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16161P"
+  },
+  {
+    "sku": "UCI-16161U",
+    "name": "WRAP SUKI AND FRIENDS",
+    "unit": "件",
+    "unitCostCents": 16982,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16161U"
+  },
+  {
+    "sku": "UCI-16162L",
+    "name": "THE KING GIFT BAG",
+    "unit": "件",
+    "unitCostCents": 36601,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16162L"
+  },
+  {
+    "sku": "UCI-16162M",
+    "name": "THE KING GIFT BAG 25x24x12cm",
+    "unit": "件",
+    "unitCostCents": 10517,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16162M"
+  },
+  {
+    "sku": "UCI-16168M",
+    "name": "FUNKY MONKEY GIFT BAG MEDIUM",
+    "unit": "件",
+    "unitCostCents": 20214,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16168M"
+  },
+  {
+    "sku": "UCI-16169E",
+    "name": "WRAP 50'S  CHRISTMAS",
+    "unit": "件",
+    "unitCostCents": 20124,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16169E"
+  },
+  {
+    "sku": "UCI-16169K",
+    "name": "WRAP FOLK ART",
+    "unit": "件",
+    "unitCostCents": 49987,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16169K"
+  },
+  {
+    "sku": "UCI-16169M",
+    "name": "WRAP DAISY CARPET",
+    "unit": "件",
+    "unitCostCents": 43846,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16169M"
+  },
+  {
+    "sku": "UCI-16169N",
+    "name": "WRAP BLUE RUSSIAN FOLKART",
+    "unit": "件",
+    "unitCostCents": 6914,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16169N"
+  },
+  {
+    "sku": "UCI-16169P",
+    "name": "WRAP GREEN RUSSIAN FOLKART",
+    "unit": "件",
+    "unitCostCents": 24226,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16169P"
+  },
+  {
+    "sku": "UCI-16202A",
+    "name": "PASTEL PINK PHOTO ALBUM",
+    "unit": "件",
+    "unitCostCents": 33446,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16202A"
+  },
+  {
+    "sku": "UCI-16202B",
+    "name": "PASTEL BLUE PHOTO ALBUM",
+    "unit": "件",
+    "unitCostCents": 12146,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16202B"
+  },
+  {
+    "sku": "UCI-16202E",
+    "name": "BLACK PHOTO ALBUM",
+    "unit": "件",
+    "unitCostCents": 13478,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16202E"
+  },
+  {
+    "sku": "UCI-16206B",
+    "name": "RED PURSE WITH PINK HEART",
+    "unit": "件",
+    "unitCostCents": 35452,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16206B"
+  },
+  {
+    "sku": "UCI-16207A",
+    "name": "PINK STRAWBERRY HANDBAG",
+    "unit": "件",
+    "unitCostCents": 7210,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16207A"
+  },
+  {
+    "sku": "UCI-16207B",
+    "name": "PINK HEART RED HANDBAG",
+    "unit": "件",
+    "unitCostCents": 34474,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16207B"
+  },
+  {
+    "sku": "UCI-16216",
+    "name": "LETTER SHAPE PENCIL SHARPENER",
+    "unit": "件",
+    "unitCostCents": 25089,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16216"
+  },
+  {
+    "sku": "UCI-16218",
+    "name": "CARTOON  PENCIL SHARPENERS",
+    "unit": "件",
+    "unitCostCents": 15910,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16218"
+  },
+  {
+    "sku": "UCI-16219",
+    "name": "HOUSE SHAPE PENCIL SHARPENER",
+    "unit": "件",
+    "unitCostCents": 29271,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16219"
+  },
+  {
+    "sku": "UCI-16225",
+    "name": "RATTLE SNAKE EGGS",
+    "unit": "件",
+    "unitCostCents": 31763,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16225"
+  },
+  {
+    "sku": "UCI-16235",
+    "name": "RECYCLED PENCIL WITH RABBIT ERASER",
+    "unit": "件",
+    "unitCostCents": 30471,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16235"
+  },
+  {
+    "sku": "UCI-16236",
+    "name": "KITTY PENCIL ERASERS",
+    "unit": "件",
+    "unitCostCents": 23583,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16236"
+  },
+  {
+    "sku": "UCI-16237",
+    "name": "SLEEPING CAT ERASERS",
+    "unit": "件",
+    "unitCostCents": 9818,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16237"
+  },
+  {
+    "sku": "UCI-16238",
+    "name": "PARTY TIME PENCIL ERASERS",
+    "unit": "件",
+    "unitCostCents": 20945,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16238"
+  },
+  {
+    "sku": "UCI-16244B",
+    "name": "MAXWELL 2 TONE BLUE 60 PAGE PHOTO A",
+    "unit": "件",
+    "unitCostCents": 33204,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16244B"
+  },
+  {
+    "sku": "UCI-16248B",
+    "name": "BLUE HOLE PUNCH",
+    "unit": "件",
+    "unitCostCents": 17286,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16248B"
+  },
+  {
+    "sku": "UCI-16254",
+    "name": "TRANSPARENT ACRYLIC TAPE DISPENSER",
+    "unit": "件",
+    "unitCostCents": 22709,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16254"
+  },
+  {
+    "sku": "UCI-16258A",
+    "name": "SWIRLY CIRCULAR RUBBERS IN BAG",
+    "unit": "件",
+    "unitCostCents": 2045,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16258A"
+  },
+  {
+    "sku": "UCI-16259",
+    "name": "PIECE OF CAMO STATIONERY SET",
+    "unit": "件",
+    "unitCostCents": 6267,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:16259"
+  },
+  {
+    "sku": "UCI-17001",
+    "name": "HEAVENS SCENT FRAGRANCE OILS ASSTD",
+    "unit": "件",
+    "unitCostCents": 45440,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17001"
+  },
+  {
+    "sku": "UCI-17003",
+    "name": "BROCADE RING PURSE",
+    "unit": "件",
+    "unitCostCents": 44956,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17003"
+  },
+  {
+    "sku": "UCI-17007B",
+    "name": "S/3 POT POURI CUSHIONS BLUE COLOURS",
+    "unit": "件",
+    "unitCostCents": 24171,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17007B"
+  },
+  {
+    "sku": "UCI-17011F",
+    "name": "ORIGAMI SANDLEWOOD INCENSE+FLOWER",
+    "unit": "件",
+    "unitCostCents": 11131,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17011F"
+  },
+  {
+    "sku": "UCI-17012A",
+    "name": "ORIGAMI VANILLA INCENSE/CANDLE SET",
+    "unit": "件",
+    "unitCostCents": 2396,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17012A"
+  },
+  {
+    "sku": "UCI-17012B",
+    "name": "ORIGAMI JASMINE INCENSE/CANDLE SET",
+    "unit": "件",
+    "unitCostCents": 38549,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17012B"
+  },
+  {
+    "sku": "UCI-17012C",
+    "name": "ORIGAMI LAVENDER INCENSE/CANDL SET",
+    "unit": "件",
+    "unitCostCents": 38381,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17012C"
+  },
+  {
+    "sku": "UCI-17012D",
+    "name": "ORIGAMI ROSE INCENSE/CANDLE SET",
+    "unit": "件",
+    "unitCostCents": 13953,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17012D"
+  },
+  {
+    "sku": "UCI-17012E",
+    "name": "ORIGAMI OPIUM INCENSE/CANDLE SET",
+    "unit": "件",
+    "unitCostCents": 10565,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17012E"
+  },
+  {
+    "sku": "UCI-17012F",
+    "name": "ORIGAMI SANDLEWOOD INCENSE/CAND SET",
+    "unit": "件",
+    "unitCostCents": 17031,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17012F"
+  },
+  {
+    "sku": "UCI-17013D",
+    "name": "ORIGAMI ROSE INCENSE IN TUBE",
+    "unit": "件",
+    "unitCostCents": 32105,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17013D"
+  },
+  {
+    "sku": "UCI-17014A",
+    "name": "ORIGAMI VANILLA INCENSE CONES",
+    "unit": "件",
+    "unitCostCents": 7067,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17014A"
+  },
+  {
+    "sku": "UCI-17021",
+    "name": "NAMASTE SWAGAT INCENSE",
+    "unit": "件",
+    "unitCostCents": 20162,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17021"
+  },
+  {
+    "sku": "UCI-17028J",
+    "name": "INCENSE BAZAAR PEACH",
+    "unit": "件",
+    "unitCostCents": 41722,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17028J"
+  },
+  {
+    "sku": "UCI-17038",
+    "name": "PORCELAIN BUDAH INCENSE HOLDER",
+    "unit": "件",
+    "unitCostCents": 16474,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17038"
+  },
+  {
+    "sku": "UCI-17084A",
+    "name": "TRANQUILITY MASALA INCENSE",
+    "unit": "件",
+    "unitCostCents": 35150,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17084A"
+  },
+  {
+    "sku": "UCI-17084J",
+    "name": "LOVE POTION MASALA INCENSE",
+    "unit": "件",
+    "unitCostCents": 7375,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17084J"
+  },
+  {
+    "sku": "UCI-17084N",
+    "name": "FAIRY DREAMS INCENSE",
+    "unit": "件",
+    "unitCostCents": 13072,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17084N"
+  },
+  {
+    "sku": "UCI-17084P",
+    "name": "DRAGONS BLOOD INCENSE",
+    "unit": "件",
+    "unitCostCents": 23183,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17084P"
+  },
+  {
+    "sku": "UCI-17084R",
+    "name": "ASSORTED INCENSE PACK",
+    "unit": "件",
+    "unitCostCents": 12921,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17084R"
+  },
+  {
+    "sku": "UCI-17090A",
+    "name": "LAVENDER INCENSE 40 CONES IN TIN",
+    "unit": "件",
+    "unitCostCents": 29816,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17090A"
+  },
+  {
+    "sku": "UCI-17090D",
+    "name": "VANILLA INCENSE 40 CONES IN TIN",
+    "unit": "件",
+    "unitCostCents": 40189,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17090D"
+  },
+  {
+    "sku": "UCI-17091A",
+    "name": "LAVENDER INCENSE IN TIN",
+    "unit": "件",
+    "unitCostCents": 23214,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17091A"
+  },
+  {
+    "sku": "UCI-17091J",
+    "name": "VANILLA INCENSE IN TIN",
+    "unit": "件",
+    "unitCostCents": 48615,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17091J"
+  },
+  {
+    "sku": "UCI-17096",
+    "name": "ASSORTED LAQUERED INCENSE HOLDERS",
+    "unit": "件",
+    "unitCostCents": 44828,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17096"
+  },
+  {
+    "sku": "UCI-17107D",
+    "name": "FLOWER FAIRY,5 SUMMER B'DRAW LINERS",
+    "unit": "件",
+    "unitCostCents": 32115,
+    "reorderPoint": 10,
+    "origin": "PUBLIC_DERIVED",
+    "sourceKey": "uci:352:StockCode:17107D"
+  }
+]
