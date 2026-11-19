@@ -1,0 +1,5 @@
+<script setup lang="ts">
+defineProps<{search:string;sort:string;status?:string;statuses?:Record<string,string>}>();
+defineEmits<{ 'update:search':[string];'update:sort':[string];'update:status':[string];search:[] }>();
+</script>
+<template><form class="list-tools" @submit.prevent="$emit('search')"><label class="search-field"><span class="sr-only">搜尋</span><input :value="search" placeholder="搜尋單據或名稱…" type="search" @input="$emit('update:search',($event.target as HTMLInputElement).value)"></label><select v-if="statuses" aria-label="狀態篩選" :value="status" @change="$emit('update:status',($event.target as HTMLSelectElement).value);$emit('search')"><option value="">全部狀態</option><option v-for="(label,value) in statuses" :key="value" :value="value">{{ label }}</option></select><select aria-label="排序" :value="sort" @change="$emit('update:sort',($event.target as HTMLSelectElement).value);$emit('search')"><option value="desc">最新在前</option><option value="asc">最早在前</option></select><el-button native-type="submit">查詢</el-button><slot /></form></template>
