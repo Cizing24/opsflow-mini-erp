@@ -1,0 +1,25 @@
+{
+  "name": "opsflow-mini-erp", "version": "1.0.0", "private": true, "type": "module",
+  "workspaces": ["apps/*", "packages/*"], "engines": {"node": ">=24.11 <25"},
+  "scripts": {
+    "dev:api": "tsx watch apps/api/src/main.ts", "dev:web": "npm run dev -w @opsflow/web",
+    "build": "npm run build -w @opsflow/shared && npm run build -w @opsflow/api && npm run build -w @opsflow/web",
+    "typecheck": "npm run typecheck --workspaces --if-present", "lint": "eslint .",
+    "test": "vitest run tests/unit", "test:integration": "tsx scripts/test-database.ts",
+    "test:e2e": "playwright test", "db:generate": "prisma generate", "db:migrate": "prisma migrate deploy",
+    "seed": "tsx prisma/seed.ts", "data:check": "tsx scripts/data-check.ts",
+    "benchmark": "tsx scripts/benchmark.ts", "data:public": "tsx data/generators/import-public.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "11.2.11", "@nestjs/core": "11.2.11", "@nestjs/platform-express": "11.2.11",
+    "@nestjs/swagger": "^11.2.0", "@prisma/client": "7.10.1", "@prisma/adapter-mariadb": "7.10.1",
+    "cookie-parser": "^1.4.7", "csv-parse": "^6.1.0", "csv-stringify": "^6.6.0", "dotenv": "^17.2.3",
+    "express": "^5.1.0", "helmet": "^8.1.0", "reflect-metadata": "^0.2.2", "rxjs": "^7.8.2", "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0", "@playwright/test": "^1.56.1", "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.5", "@types/node": "^24.10.0", "eslint": "^9.39.0", "eslint-plugin-vue": "^10.6.0",
+    "globals": "^16.5.0", "prisma": "7.10.1", "tsx": "^4.20.6", "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0", "vitest": "^4.0.0", "vue-eslint-parser": "^10.2.0"
+  }
+}

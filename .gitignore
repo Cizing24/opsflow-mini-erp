@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+coverage/
+playwright-report/
+test-results/
+generated/
+data/sources/raw/
+backups/
+*.log
+.impeccable/cache/
+.impeccable/config.local.json
