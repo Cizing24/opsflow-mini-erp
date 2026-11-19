@@ -172,7 +172,7 @@ test("桌面與行動各路由、空狀態、focus 及實際畫面", async ({ pa
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).not.toBeVisible();
 });
-test("角色隱藏操作且重新整理後 session 可延續", async ({ page }) => {
+test("角色隱藏操作、重新整理延續 session、失效後可重新登入", async ({ page }) => {
   await login(page, "warehouse");
   await page.reload();
   await expect(
@@ -186,6 +186,12 @@ test("角色隱藏操作且重新整理後 session 可延續", async ({ page }) 
   await expect(page.getByRole("alert")).toContainText(
     "此角色沒有執行此操作的權限",
   );
+  await page.context().clearCookies();
+  await page.getByRole("link", { name: "營運工作台", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "登入營運工作區" }),
+  ).toBeVisible();
+  await login(page, "warehouse");
 });
 test("手機導覽隔離焦點且工作台保留所選單據 ID", async ({ page }) => {
   await login(page, "admin");

@@ -12,6 +12,7 @@
 | CSV 成本失真 | 空白、負數、重複 header、原子匯入 | 400 且整批不寫入 |
 | CSV 公式 | = 開頭 SKU 匯出 | 加單引號防護 |
 | 搜尋回應競爭 | unit 延後舊 Promise 回傳 | 最新結果不被覆蓋 |
+| Session 失效 | Unit 的當前／舊 401、Chromium 清 Cookie 後操作 | 回登入頁；舊 401 不清除新登入 |
 | 供應商失效 | timeout 600ms × 2 | 502，沒有訂單副作用 |
 | 前端流程回歸 | Chromium 完整跨角色業務流程 | 單據與成本真的更新 |
 | Migration 失敗 | 獨立隨機 DB fixture | 非零 exit、可前向修復 |

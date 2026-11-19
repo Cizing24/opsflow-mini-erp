@@ -26,6 +26,8 @@
 
 ## 其他開發檢查
 
+[Issue #13](https://github.com/Cizing24/opsflow-mini-erp/issues/13)：Session 到期後，API 回 401，但前端保留登入使用者，連登出也失敗，必須重新整理才能回登入頁。新增 unit 實際 RED 重現殘留使用者；共享 API client 現在收到屬於當前 Session 的 401 便清除登入狀態。以發送請求時的 CSRF 與目前值比對，避免舊請求延後回 401 清掉剛完成的新登入。兩種情境在 session-recovery.test.ts 實際 GREEN。
+
 [Issue #11](https://github.com/Cizing24/opsflow-mini-erp/issues/11)：真實 Ubuntu CI [44604237209](https://github.com/Cizing24/opsflow-mini-erp/actions/runs/44604237209) 的 Typecheck 找不到 @opsflow/shared；本機殘留的 dist 掩蓋了前置建置依賴。修正根層 Typecheck 與 dev:api 先 build shared；本機實際移開舊 dist 後重新 Typecheck 成功，沒有提交 dist 或放寬型別規則。後續完整 CI 結果見 DELIVERY_REPORT。
 
 [Issue #12](https://github.com/Cizing24/opsflow-mini-erp/issues/12)：100,706 筆異動實測，專案列表 16 並行的 P95 為 2,291.707ms。原本將各專案所有 OUT 明細載回 Node 再 filter/reduce；改為參數化 SQL 的 GROUP BY SUM，僅回每專案彙總。原基準在 before-project-aggregation.json；integration 直接比對 SQL 回應與逐筆 ledger 的金額及數量。改善幅度以後測真實結果為準。

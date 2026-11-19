@@ -6,16 +6,21 @@ export async function api<T>(
   path: string,
   options: RequestInit = {},
 ): Promise<T> {
+  const sessionCsrf = csrf;
   const response = await fetch(`/api${path}`, {
     ...options,
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      ...(csrf ? { "X-CSRF-Token": csrf } : {}),
+      ...(sessionCsrf ? { "X-CSRF-Token": sessionCsrf } : {}),
       ...options.headers,
     },
   });
   if (!response.ok) {
+    if (response.status === 401 && csrf === sessionCsrf) {
+      csrf = "";
+      useAuth().user = null;
+    }
     const body = await response
       .json()
       .catch(() => ({ error: { message: "連線中斷，請稍後重試" } }));

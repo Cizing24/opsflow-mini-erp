@@ -492,6 +492,56 @@ describe.sequential("real MySQL ERP lifecycle", () => {
         })
       ).status,
     ).toBe(400);
+    const order = await db.purchaseOrder.findFirstOrThrow({
+      where: { status: "OPEN" },
+      orderBy: { id: "asc" },
+      include: { lines: true },
+    });
+    const line = order.lines[0];
+    const foreign = await db.orderLine.findFirstOrThrow({
+      where: { orderId: { not: order.id } },
+      orderBy: { id: "desc" },
+    });
+    expect(foreign.id).toBeGreaterThan(line.id);
+    const beforeStock = await db.stock.findUnique({
+      where: {
+        warehouseId_materialId: { warehouseId, materialId: line.materialId },
+      },
+    });
+    const beforeMovements = await db.movement.count(),
+      beforeReceipts = await db.receipt.count();
+    const key = randomUUID();
+    expect(
+      (
+        await call(
+          "warehouse",
+          `/api/orders/${order.id}/receipts`,
+          "POST",
+          {
+            warehouseId,
+            lines: [
+              { lineId: line.id, quantity: 1 },
+              { lineId: foreign.id, quantity: 1 },
+            ],
+          },
+          key,
+        )
+      ).status,
+    ).toBe(409);
+    expect(
+      (await db.orderLine.findUniqueOrThrow({ where: { id: line.id } }))
+        .receivedQty,
+    ).toBe(line.receivedQty);
+    expect(
+      await db.stock.findUnique({
+        where: {
+          warehouseId_materialId: { warehouseId, materialId: line.materialId },
+        },
+      }),
+    ).toEqual(beforeStock);
+    expect(await db.movement.count()).toBe(beforeMovements);
+    expect(await db.receipt.count()).toBe(beforeReceipts);
+    expect(await db.idempotency.findUnique({ where: { key } })).toBeNull();
   });
   it("calculates actual cost from ledger and keeps commitments separate", async () => {
     const response = await call("admin", "/api/dashboard");
