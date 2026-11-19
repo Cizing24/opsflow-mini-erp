@@ -1,6 +1,6 @@
 # OpsFlow Mini ERP 交付報告
 
-彙整時間（UTC）：2026-11-19T22:25:00.687827+00:00；使用者時區 Asia/Taipei，交付日 2026-11-20。
+彙整時間（UTC）：2026-11-19T22:30:41.546455+00:00；使用者時區 Asia/Taipei，交付日 2026-11-20。
 
 ## Repository、版本與審查
 
@@ -47,6 +47,8 @@ UCI Online Retail（Chen 2015，CC BY 4.0）實際讀 541,909 列，只取代碼
 本機 Unit 7/7、Integration 27/27、E2E 4/4，共 38 個案例，未 skip。Lint、Typecheck、Build、Migration 已執行。已核對的 Ubuntu CI 快照為 Unit 6、Integration 27、E2E 4；最新版本以 PR checks 為準。該次 npm audit 0、故障演練、備份與 Docker browser smoke 全部通過；artifact 已下載核對，摘要在 testing/ci-artifact-summary.json。刻意 mutant 的失敗不納入正式通過率。
 
 真實問題有搜尋競爭、SKU 大小寫碰撞、簽核舊明細競態、CSV 空白／重複 header、workspace 路徑、全新 E2E DB 順序、parser Request ID、clean CI shared build 與登入逾時恢復；Issue／RCA／修復與回歸位置在 maintenance/REAL_BUG_RECORDS.md。六項 Simulation 與真實問題分開，沒有編造歷史事故。
+
+交付前新增的 Effect ReDoS advisory 曾使後續 CI audit 失敗（Issue #14）；已用 scoped override 修至 effect 3.22.1（Commit `fda00d7`），npm audit 回到 0，Prisma generate／migrate 通過。保留 RED 報告與修復紀錄，沒有降低檢查門檻。
 
 ## Docker 與操作
 

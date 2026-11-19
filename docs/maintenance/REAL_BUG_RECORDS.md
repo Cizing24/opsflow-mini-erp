@@ -26,6 +26,8 @@
 
 ## 其他開發檢查
 
+[Issue #14](https://github.com/Cizing24/opsflow-mini-erp/issues/14)：交付前第二次 CI [44628486814](https://github.com/Cizing24/opsflow-mini-erp/actions/runs/44628486814) 停在 npm audit，原因為新納入資料庫的 [GHSA-7589-6fvf-x4pw](https://github.com/advisories/GHSA-7589-6fvf-x4pw)。Prisma 7.10.1 的 @prisma/config 固定使用 effect 3.20.0，官方修補版為 3.22.1。以 scoped override 僅替換這個同 major 間接依賴；Fix commit `fda00d7`。audit RED 保留在 testing/npm-audit-red-effect.json；修後 npm audit 0，Prisma generate／migrate 實際成功。未調降 audit 門檻，也沒有將 npm 建議的 Prisma 跨 major 降版套入現有系統。最新完整 CI 以 PR checks 為準。
+
 [Issue #13](https://github.com/Cizing24/opsflow-mini-erp/issues/13)：Session 到期後，API 回 401，但前端保留登入使用者，連登出也失敗，必須重新整理才能回登入頁。新增 unit 實際 RED 重現殘留使用者；共享 API client 現在收到屬於當前 Session 的 401 便清除登入狀態。以發送請求時的 CSRF 與目前值比對，避免舊請求延後回 401 清掉剛完成的新登入。Fix commit `7eadd36`；兩種情境在 session-recovery.test.ts 實際 GREEN，Chromium 清 Cookie 後操作、回登入頁及重新登入也通過。
 
 [Issue #11](https://github.com/Cizing24/opsflow-mini-erp/issues/11)：真實 Ubuntu CI [44604237209](https://github.com/Cizing24/opsflow-mini-erp/actions/runs/44604237209) 的 Typecheck 找不到 @opsflow/shared；本機殘留的 dist 掩蓋了前置建置依賴。修正根層 Typecheck 與 dev:api 先 build shared；本機實際移開舊 dist 後重新 Typecheck 成功，沒有提交 dist 或放寬型別規則。後續完整 CI 結果見 DELIVERY_REPORT。

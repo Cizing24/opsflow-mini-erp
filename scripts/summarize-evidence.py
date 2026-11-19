@@ -141,6 +141,8 @@ UCI Online Retail（Chen 2015，CC BY 4.0）實際讀 541,909 列，只取代碼
 
 真實問題有搜尋競爭、SKU 大小寫碰撞、簽核舊明細競態、CSV 空白／重複 header、workspace 路徑、全新 E2E DB 順序、parser Request ID、clean CI shared build 與登入逾時恢復；Issue／RCA／修復與回歸位置在 maintenance/REAL_BUG_RECORDS.md。六項 Simulation 與真實問題分開，沒有編造歷史事故。
 
+交付前新增的 Effect ReDoS advisory 曾使後續 CI audit 失敗（Issue #14）；已用 scoped override 修至 effect 3.22.1（Commit `fda00d7`），npm audit 回到 0，Prisma generate／migrate 通過。保留 RED 報告與修復紀錄，沒有降低檢查門檻。
+
 ## Docker 與操作
 
 全新 opsflow-clean Volume 已實測自動 Migration、Seed、healthy、Chromium 登入及零異常資料檢查；完成後清理該專用副本。保留原資料的主 Demo 已更新並驗證於 http://localhost:3000 。
