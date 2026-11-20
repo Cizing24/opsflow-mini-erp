@@ -1,0 +1,10 @@
+{
+  "sourceCommit": "aa2f234",
+  "browser": "Chromium",
+  "viewport": "1280x720",
+  "data": "new isolated MySQL; guided synthetic seed",
+  "flow": "request > approval > PO > partial receipt > material issue > audit",
+  "video": "demo.mp4",
+  "errors": [],
+  "credentialsOmitted": true
+}
