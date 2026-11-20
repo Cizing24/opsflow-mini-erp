@@ -1,0 +1,59 @@
+name: ERP verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - name: Remove historical evidence before this run
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; for(const p of ['docs/testing/unit-results.json','docs/testing/integration-results.json','docs/testing/e2e-results.json','docs/testing/docker-smoke.json','docs/testing/npm-audit.json','docs/maintenance/fault-results.json','docs/maintenance/backup-restore-results.json','docs/screenshots/desktop.png','docs/screenshots/mobile.png'])fs.rmSync(p,{force:true});"
+      - name: Create isolated local configuration
+        run: |
+          node --input-type=module -e "import fs from 'node:fs';import {randomBytes} from 'node:crypto';let s=fs.readFileSync('.env.example','utf8');s=s.replaceAll('local-only-change-me',randomBytes(18).toString('hex')).replaceAll('local-root-change-me',randomBytes(18).toString('hex')).replace('DEMO_PASSWORD=','DEMO_PASSWORD='+randomBytes(20).toString('hex'));fs.writeFileSync('.env',s);"
+      - run: npm ci --no-fund
+      - run: docker compose up -d --wait db
+      - run: npm run db:generate
+      - run: npm run db:migrate
+      - run: npm run seed
+      - run: npm run lint
+      - run: npm audit --audit-level=moderate --json > docs/testing/npm-audit.json
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test -- --reporter=default --reporter=json --outputFile=docs/testing/unit-results.json
+      - run: node --import tsx scripts/test-database.ts --setup --reset
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - run: node --import tsx scripts/fault-drills.ts
+      - run: node --import tsx scripts/backup-restore.ts
+      - name: Build and start actual Compose application
+        run: docker compose up -d --build app supplier
+      - run: node --import tsx scripts/docker-smoke.ts
+      - name: Upload sanitized evidence only
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: verification-evidence
+          path: |
+            docs/testing/unit-results.json
+            docs/testing/npm-audit.json
+            docs/testing/integration-results.json
+            docs/testing/e2e-results.json
+            docs/testing/docker-smoke.json
+            docs/maintenance/fault-results.json
+            docs/maintenance/backup-restore-results.json
+            docs/screenshots/*.png
+      - name: Stop isolated services
+        if: always()
+        run: docker compose down

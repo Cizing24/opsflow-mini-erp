@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-11-19T19:56:47.8382596Z",
+  "project": "opsflow-clean",
+  "freshVolume": "opsflow-clean_mysql-data",
+  "migrationApplied": true,
+  "seedCreated": true,
+  "services": [
+    {
+      "Service": "app",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "opsflow-mini-erp:local",
+      "Name": "opsflow-clean-app-1"
+    },
+    {
+      "Service": "db",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "mysql:8.4",
+      "Name": "opsflow-clean-db-1"
+    },
+    {
+      "Service": "supplier",
+      "State": "running",
+      "Health": "",
+      "Image": "opsflow-mini-erp:local",
+      "Name": "opsflow-clean-supplier-1"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+}
+enum Role {
+  ADMIN
+  MANAGER
+  ENGINEER
+  BUYER
+  WAREHOUSE
+}
+enum ProjectStatus {
+  PLANNED
+  ACTIVE
+  COMPLETED
+}
+enum RequestStatus {
+  SUBMITTED
+  RETURNED
+  REJECTED
+  APPROVED
+  ORDERED
+}
+enum OrderStatus {
+  OPEN
+  PARTIAL
+  RECEIVED
+}
+enum MovementKind {
+  IN
+  OUT
+}
+enum Origin {
+  SYNTHETIC
+  PUBLIC_DERIVED
+  TEST
+}
+model Department {
+  id Int @id @default(autoincrement())
+  name String @unique @db.VarChar(120)
+  users User[]
+}
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique @db.VarChar(120)
+  name String @db.VarChar(120)
+  passwordHash String @db.VarChar(255)
+  role Role
+  departmentId Int
+  department Department @relation(fields:[departmentId],references:[id])
+  sessions Session[]
+  ownedProjects Project[]
+  memberships ProjectMember[]
+  requests PurchaseRequest[]
+  approvals Approval[]
+  receipts Receipt[]
+  movements Movement[]
+  audits AuditLog[]
+}
+model Session {
+  tokenHash String @id @db.VarChar(64)
+  userId Int
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  csrf String @db.VarChar(64)
+  expiresAt DateTime
+  @@index([expiresAt])
+}
+model Project {
+  id Int @id @default(autoincrement())
+  code String @unique @db.VarChar(40)
+  name String @db.VarChar(120)
+  budgetCents Int
+  status ProjectStatus @default(ACTIVE)
+  ownerId Int
+  owner User @relation(fields:[ownerId],references:[id])
+  members ProjectMember[]
+  requirements Requirement[]
+  requests PurchaseRequest[]
+  movements Movement[]
+  createdAt DateTime @default(now())
+}
+model ProjectMember {
+  projectId Int
+  userId Int
+  project Project @relation(fields:[projectId],references:[id],onDelete:Cascade)
+  user User @relation(fields:[userId],references:[id])
+  @@id([projectId,userId])
+}
+model Requirement {
+  projectId Int
+  materialId Int
+  quantity Int
+  project Project @relation(fields:[projectId],references:[id],onDelete:Cascade)
+  material Material @relation(fields:[materialId],references:[id])
+  @@id([projectId,materialId])
+}
+model Supplier {
+  id Int @id @default(autoincrement())
+  name String @unique @db.VarChar(120)
+  contact String @db.VarChar(120)
+  leadDays Int
+  orders PurchaseOrder[]
+}
+model Material {
+  id Int @id @default(autoincrement())
+  sku String @unique @db.VarChar(120)
+  name String @db.VarChar(120)
+  unit String @db.VarChar(120)
+  unitCostCents Int
+  reorderPoint Int @default(10)
+  origin Origin @default(SYNTHETIC)
+  sourceKey String? @db.VarChar(120)
+  stocks Stock[]
+  requirements Requirement[]
+  requestLines RequestLine[]
+  orderLines OrderLine[]
+  movements Movement[]
+}
+model Warehouse {
+  id Int @id @default(autoincrement())
+  name String @unique @db.VarChar(120)
+  stocks Stock[]
+  receipts Receipt[]
+  movements Movement[]
+}
+model Stock {
+  warehouseId Int
+  materialId Int
+  quantity Int @default(0)
+  warehouse Warehouse @relation(fields:[warehouseId],references:[id])
+  material Material @relation(fields:[materialId],references:[id])
+  @@id([warehouseId,materialId])
+}
+model PurchaseRequest {
+  id Int @id @default(autoincrement())
+  number String @unique @db.VarChar(40)
+  title String @db.VarChar(120)
+  projectId Int
+  project Project @relation(fields:[projectId],references:[id])
+  requesterId Int
+  requester User @relation(fields:[requesterId],references:[id])
+  status RequestStatus @default(SUBMITTED)
+  submittedAt DateTime @default(now())
+  lines RequestLine[]
+  approvals Approval[]
+  order PurchaseOrder?
+  @@index([status,submittedAt])
+}
+model RequestLine {
+  id Int @id @default(autoincrement())
+  requestId Int
+  request PurchaseRequest @relation(fields:[requestId],references:[id],onDelete:Cascade)
+  materialId Int
+  material Material @relation(fields:[materialId],references:[id])
+  quantity Int
+  unitCostCents Int
+  @@unique([requestId,materialId])
+}
+model Approval {
+  id Int @id @default(autoincrement())
+  requestId Int
+  request PurchaseRequest @relation(fields:[requestId],references:[id])
+  actorId Int
+  actor User @relation(fields:[actorId],references:[id])
+  decision RequestStatus
+  comment String @db.VarChar(500)
+  submittedAt DateTime
+  createdAt DateTime @default(now())
+}
+model PurchaseOrder {
+  id Int @id @default(autoincrement())
+  number String @unique @db.VarChar(40)
+  requestId Int @unique
+  request PurchaseRequest @relation(fields:[requestId],references:[id])
+  supplierId Int
+  supplier Supplier @relation(fields:[supplierId],references:[id])
+  status OrderStatus @default(OPEN)
+  orderedAt DateTime @default(now())
+  expectedAt DateTime
+  completedAt DateTime?
+  lines OrderLine[]
+  receipts Receipt[]
+  @@index([status,expectedAt])
+}
+model OrderLine {
+  id Int @id @default(autoincrement())
+  orderId Int
+  order PurchaseOrder @relation(fields:[orderId],references:[id],onDelete:Cascade)
+  materialId Int
+  material Material @relation(fields:[materialId],references:[id])
+  quantity Int
+  receivedQty Int @default(0)
+  unitCostCents Int
+  receiptLines ReceiptLine[]
+  @@unique([orderId,materialId])
+}
+model Receipt {
+  id Int @id @default(autoincrement())
+  orderId Int
+  order PurchaseOrder @relation(fields:[orderId],references:[id])
+  warehouseId Int
+  warehouse Warehouse @relation(fields:[warehouseId],references:[id])
+  actorId Int
+  actor User @relation(fields:[actorId],references:[id])
+  createdAt DateTime @default(now())
+  lines ReceiptLine[]
+}
+model ReceiptLine {
+  id Int @id @default(autoincrement())
+  receiptId Int
+  receipt Receipt @relation(fields:[receiptId],references:[id])
+  orderLineId Int
+  orderLine OrderLine @relation(fields:[orderLineId],references:[id])
+  quantity Int
+  movement Movement?
+  @@unique([receiptId,orderLineId])
+}
+model Movement {
+  id Int @id @default(autoincrement())
+  materialId Int
+  material Material @relation(fields:[materialId],references:[id])
+  warehouseId Int
+  warehouse Warehouse @relation(fields:[warehouseId],references:[id])
+  projectId Int?
+  project Project? @relation(fields:[projectId],references:[id])
+  actorId Int
+  actor User @relation(fields:[actorId],references:[id])
+  receiptLineId Int? @unique
+  receiptLine ReceiptLine? @relation(fields:[receiptLineId],references:[id])
+  kind MovementKind
+  quantity Int
+  unitCostCents Int
+  note String @db.VarChar(200)
+  origin Origin @default(SYNTHETIC)
+  sourceKey String? @unique @db.VarChar(120)
+  createdAt DateTime @default(now())
+  @@index([projectId,createdAt])
+  @@index([materialId,warehouseId,createdAt])
+}
+model Idempotency {
+  key String @id @db.VarChar(120)
+  actorId Int
+  scope String @db.VarChar(80)
+  hash String @db.VarChar(64)
+  result Json?
+  createdAt DateTime @default(now())
+}
+model AuditLog {
+  id Int @id @default(autoincrement())
+  actorId Int?
+  actor User? @relation(fields:[actorId],references:[id])
+  action String @db.VarChar(100)
+  entity String @db.VarChar(100)
+  requestId String @db.VarChar(64)
+  detail Json
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}

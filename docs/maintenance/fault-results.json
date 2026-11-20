@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-19T19:23:43.761Z",
+  "simulation": true,
+  "isolatedDatabase": "opsflow_drill_0d78885cda",
+  "migration": {
+    "failureExit": 1,
+    "failure": "Datasource \"db\": MySQL database \"opsflow_drill_0d78885cda\" at \"127.0.0.1:3307\"\n\n1 migration found in prisma/migrations\n\nApplying migration `202611200099_simulation`\nLoaded Prisma config from tests\\.generated\\opsflow_drill_0d78885cda\\prisma.config.ts.\n\nPrisma schema loaded from prisma\\schema.prisma.\nError: P3018\n\nA migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve\n\nMigration name: 202611200099_simulation\n\nDatabase error code: 1146\n\nDatabase error:\nTable 'opsflow_drill_0d78885cda.MissingSimulationTable' doesn't exist\n\nPlease check the query number 1 from the migration file.\n\n\n",
+    "resolveExit": 0,
+    "forwardFixExit": 0
+  },
+  "regression": {
+    "mutantExit": 1,
+    "observed": "202 instead of 597",
+    "productionRulesExit": 0
+  },
+  "otherDrills": {
+    "duplicateReceipts": "tests/integration/workflow.test.ts: 8 concurrent same-key requests",
+    "lastItem": "tests/integration/workflow.test.ts: 12 callers, one winner",
+    "slowReport": "scripts/benchmark.ts: composite-index removal and restoration in opsflow_benchmark",
+    "supplierTimeout": "tests/integration/workflow.test.ts: 600ms x 2 attempts => 502"
+  }
+}

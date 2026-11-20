@@ -1,0 +1,242 @@
+{
+  "at": "2026-11-19T21:34:05.923Z",
+  "commit": "7cdf7422fd0215800d1a33d91225337a0cbd8440",
+  "workingTreeDirty": false,
+  "command": "DATABASE_URL=<opsflow_benchmark> npm run benchmark",
+  "environment": {
+    "os": "win32",
+    "release": "10.0.26300",
+    "cpu": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "memoryBytes": 16542154752,
+    "node": "v24.22.1",
+    "mysql": [
+      {
+        "version": "8.4.13"
+      }
+    ],
+    "docker": "29.9.3"
+  },
+  "dataset": {
+    "issues": {
+      "negativeStock": 0,
+      "stockLedgerMismatch": 0,
+      "missingStock": 0,
+      "receiptMismatch": 0,
+      "movementMismatch": 0,
+      "stateMismatch": 0,
+      "approvalOrderMismatch": 0,
+      "negativeQuantity": 0
+    },
+    "counts": {
+      "projects": 50,
+      "users": 5,
+      "materials": 20,
+      "requests": 1008,
+      "orders": 1000,
+      "receipts": 666,
+      "movements": 100706
+    }
+  },
+  "datasetSeed": {
+    "asOf": "2026-11-19T00:00:00.000Z",
+    "mode": "benchmark",
+    "origin": "SYNTHETIC",
+    "randomSeed": "20261120"
+  },
+  "load": {
+    "samplesPerScenario": 120,
+    "concurrency": [
+      1,
+      4,
+      16
+    ],
+    "warmup": 5,
+    "quantiles": "nearest-rank",
+    "network": "loopback; NestJS on Windows; MySQL in Docker Desktop",
+    "limit": "Closed-loop short runs; no confidence interval or sustained-load capacity claim"
+  },
+  "api": [
+    {
+      "path": "/api/movements?page=1&pageSize=20",
+      "concurrency": 1,
+      "samples": 120,
+      "averageMs": 23.375076666666683,
+      "p50Ms": 22.541000000000167,
+      "p95Ms": 29.515499999999975,
+      "p99Ms": 33.08069999999998,
+      "elapsedMs": 2805.263,
+      "throughputRps": 42.776737867358605,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/movements?page=1&pageSize=20",
+      "concurrency": 4,
+      "samples": 120,
+      "averageMs": 35.797910833333255,
+      "p50Ms": 34.66609999999946,
+      "p95Ms": 45.504799999999705,
+      "p99Ms": 48.778300000000854,
+      "elapsedMs": 1082.8269,
+      "throughputRps": 110.82103704664154,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/movements?page=1&pageSize=20",
+      "concurrency": 16,
+      "samples": 120,
+      "averageMs": 118.1862425,
+      "p50Ms": 118.29150000000027,
+      "p95Ms": 137.54719999999998,
+      "p99Ms": 144.36380000000008,
+      "elapsedMs": 920.9650000000001,
+      "throughputRps": 130.29811122029608,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/projects?page=1&pageSize=20",
+      "concurrency": 1,
+      "samples": 120,
+      "averageMs": 44.361140833333316,
+      "p50Ms": 43.490999999999985,
+      "p95Ms": 50.12490000000071,
+      "p99Ms": 57.87779999999839,
+      "elapsedMs": 5323.5049,
+      "throughputRps": 22.541540254804687,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/projects?page=1&pageSize=20",
+      "concurrency": 4,
+      "samples": 120,
+      "averageMs": 74.91411666666659,
+      "p50Ms": 74.48539999999957,
+      "p95Ms": 85.42159999999967,
+      "p99Ms": 100.22769999999946,
+      "elapsedMs": 2270.4994000000006,
+      "throughputRps": 52.851808725428405,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/projects?page=1&pageSize=20",
+      "concurrency": 16,
+      "samples": 120,
+      "averageMs": 262.0524533333334,
+      "p50Ms": 264.46820000000116,
+      "p95Ms": 303.1866000000009,
+      "p99Ms": 305.3263999999999,
+      "elapsedMs": 2037.003999999999,
+      "throughputRps": 58.91004632293312,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/reports/costs",
+      "concurrency": 1,
+      "samples": 120,
+      "averageMs": 64.23323416666683,
+      "p50Ms": 63.49169999999867,
+      "p95Ms": 68.67710000000079,
+      "p99Ms": 72.66869999999835,
+      "elapsedMs": 7708.114399999999,
+      "throughputRps": 15.56800973270454,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/reports/costs",
+      "concurrency": 4,
+      "samples": 120,
+      "averageMs": 105.41422416666688,
+      "p50Ms": 99.9916000000012,
+      "p95Ms": 156.5040999999983,
+      "p99Ms": 169.4857000000011,
+      "elapsedMs": 3178.431800000002,
+      "throughputRps": 37.75446747040472,
+      "errorRate": 0,
+      "errors": 0
+    },
+    {
+      "path": "/api/reports/costs",
+      "concurrency": 16,
+      "samples": 120,
+      "averageMs": 250.85613250000017,
+      "p50Ms": 248.35570000000007,
+      "p95Ms": 315.3938999999991,
+      "p99Ms": 357.1342000000004,
+      "elapsedMs": 1962.744300000002,
+      "throughputRps": 61.138885997529,
+      "errorRate": 0,
+      "errors": 0
+    }
+  ],
+  "sql": {
+    "query": "Movement JOIN Project by projectId and createdAt ordered with LIMIT 50",
+    "beforeIndex": {
+      "samples": 30,
+      "averageMs": 4.323726666666819,
+      "p50Ms": 3.8326000000015483,
+      "p95Ms": 4.997099999996863,
+      "p99Ms": 17.951399999998102
+    },
+    "afterIndex": {
+      "samples": 30,
+      "averageMs": 2.178599999999763,
+      "p50Ms": 1.9628999999986263,
+      "p95Ms": 2.9048000000002503,
+      "p99Ms": 3.60740000000078
+    },
+    "beforePlan": [
+      {
+        "EXPLAIN": "{\n  \"query_block\": {\n    \"select_id\": 1,\n    \"cost_info\": {\n      \"query_cost\": \"350.35\"\n    },\n    \"ordering_operation\": {\n      \"using_filesort\": true,\n      \"nested_loop\": [\n        {\n          \"table\": {\n            \"table_name\": \"p\",\n            \"access_type\": \"const\",\n            \"possible_keys\": [\n              \"PRIMARY\"\n            ],\n            \"key\": \"PRIMARY\",\n            \"used_key_parts\": [\n              \"id\"\n            ],\n            \"key_length\": \"4\",\n            \"ref\": [\n              \"const\"\n            ],\n            \"rows_examined_per_scan\": 1,\n            \"rows_produced_per_join\": 1,\n            \"filtered\": \"100.00\",\n            \"cost_info\": {\n              \"read_cost\": \"0.00\",\n              \"eval_cost\": \"0.10\",\n              \"prefix_cost\": \"0.00\",\n              \"data_read_per_join\": \"664\"\n            },\n            \"used_columns\": [\n              \"id\",\n              \"name\"\n            ]\n          }\n        },\n        {\n          \"table\": {\n            \"table_name\": \"m\",\n            \"access_type\": \"ref\",\n            \"possible_keys\": [\n              \"benchmark_fk_project\"\n            ],\n            \"key\": \"benchmark_fk_project\",\n            \"used_key_parts\": [\n              \"projectId\"\n            ],\n            \"key_length\": \"5\",\n            \"ref\": [\n              \"const\"\n            ],\n            \"rows_examined_per_scan\": 1001,\n            \"rows_produced_per_join\": 333,\n            \"filtered\": \"33.33\",\n            \"cost_info\": {\n              \"read_cost\": \"250.25\",\n              \"eval_cost\": \"33.36\",\n              \"prefix_cost\": \"350.35\",\n              \"data_read_per_join\": \"432K\"\n            },\n            \"used_columns\": [\n              \"id\",\n              \"projectId\",\n              \"quantity\",\n              \"unitCostCents\",\n              \"createdAt\"\n            ],\n            \"attached_condition\": \"(`opsflow_benchmark`.`m`.`createdAt` >= TIMESTAMP'2026-11-01 00:00:00')\"\n          }\n        }\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "afterPlan": [
+      {
+        "EXPLAIN": "{\n  \"query_block\": {\n    \"select_id\": 1,\n    \"cost_info\": {\n      \"query_cost\": \"350.35\"\n    },\n    \"ordering_operation\": {\n      \"using_filesort\": false,\n      \"nested_loop\": [\n        {\n          \"table\": {\n            \"table_name\": \"p\",\n            \"access_type\": \"const\",\n            \"possible_keys\": [\n              \"PRIMARY\"\n            ],\n            \"key\": \"PRIMARY\",\n            \"used_key_parts\": [\n              \"id\"\n            ],\n            \"key_length\": \"4\",\n            \"ref\": [\n              \"const\"\n            ],\n            \"rows_examined_per_scan\": 1,\n            \"rows_produced_per_join\": 1,\n            \"filtered\": \"100.00\",\n            \"cost_info\": {\n              \"read_cost\": \"0.00\",\n              \"eval_cost\": \"0.10\",\n              \"prefix_cost\": \"0.00\",\n              \"data_read_per_join\": \"664\"\n            },\n            \"used_columns\": [\n              \"id\",\n              \"name\"\n            ]\n          }\n        },\n        {\n          \"table\": {\n            \"table_name\": \"m\",\n            \"access_type\": \"ref\",\n            \"possible_keys\": [\n              \"benchmark_fk_project\",\n              \"Movement_projectId_createdAt_idx\"\n            ],\n            \"key\": \"Movement_projectId_createdAt_idx\",\n            \"used_key_parts\": [\n              \"projectId\"\n            ],\n            \"key_length\": \"5\",\n            \"ref\": [\n              \"const\"\n            ],\n            \"rows_examined_per_scan\": 1001,\n            \"rows_produced_per_join\": 333,\n            \"filtered\": \"33.33\",\n            \"backward_index_scan\": true,\n            \"cost_info\": {\n              \"read_cost\": \"250.25\",\n              \"eval_cost\": \"33.36\",\n              \"prefix_cost\": \"350.35\",\n              \"data_read_per_join\": \"432K\"\n            },\n            \"used_columns\": [\n              \"id\",\n              \"projectId\",\n              \"quantity\",\n              \"unitCostCents\",\n              \"createdAt\"\n            ],\n            \"attached_condition\": \"(`opsflow_benchmark`.`m`.`createdAt` >= TIMESTAMP'2026-11-01 00:00:00')\"\n          }\n        }\n      ]\n    }\n  }\n}"
+      }
+    ],
+    "pagination": [
+      {
+        "offset": 0,
+        "samples": 10,
+        "averageMs": 2.703949999999895,
+        "p50Ms": 2.33719999999812,
+        "p95Ms": 5.42699999999968,
+        "p99Ms": 5.42699999999968
+      },
+      {
+        "offset": 50000,
+        "samples": 10,
+        "averageMs": 11.84577000000063,
+        "p50Ms": 11.21140000000014,
+        "p95Ms": 15.559900000000198,
+        "p99Ms": 15.559900000000198
+      },
+      {
+        "offset": 100000,
+        "samples": 10,
+        "averageMs": 19.218299999999726,
+        "p50Ms": 18.8595000000023,
+        "p95Ms": 21.569299999999203,
+        "p99Ms": 21.569299999999203
+      }
+    ]
+  },
+  "kpis": {
+    "averageApprovalHours": 13.852147852147851,
+    "pendingApprovals": 5,
+    "onTimeDeliveryRate": 0.7507507507507507,
+    "partialReceiptRate": 0.333,
+    "overdueCents": 305679757,
+    "actualCostCents": 1210341708,
+    "inventoryTurnover": null,
+    "inventoryTurnoverReason": "尚無期初與期末庫存估值快照，無法計算期間平均庫存成本",
+    "anomalyCount": 668
+  }
+}

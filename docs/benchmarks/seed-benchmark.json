@@ -1,0 +1,27 @@
+{
+  "seed": "created",
+  "mode": "benchmark",
+  "database": "opsflow_benchmark",
+  "durationMs": 165903,
+  "validation": {
+    "issues": {
+      "negativeStock": 0,
+      "stockLedgerMismatch": 0,
+      "missingStock": 0,
+      "receiptMismatch": 0,
+      "movementMismatch": 0,
+      "stateMismatch": 0,
+      "approvalOrderMismatch": 0,
+      "negativeQuantity": 0
+    },
+    "counts": {
+      "projects": 50,
+      "users": 5,
+      "materials": 20,
+      "requests": 1008,
+      "orders": 1000,
+      "receipts": 666,
+      "movements": 100706
+    }
+  }
+}

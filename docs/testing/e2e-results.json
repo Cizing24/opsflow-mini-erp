@@ -1,0 +1,41 @@
+{
+  "at": "2026-11-19T22:24:07.320Z",
+  "stats": {
+    "startTime": "2026-11-19T22:23:31.525Z",
+    "duration": 35569.045000000006,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "跨角色完整請購、簽核、採購、部分收貨、領料與成本",
+      "status": "passed",
+      "durationMs": 23552
+    },
+    {
+      "title": "桌面與行動各路由、空狀態、focus 及實際畫面",
+      "status": "passed",
+      "durationMs": 4637
+    },
+    {
+      "title": "角色隱藏操作、重新整理延續 session、失效後可重新登入",
+      "status": "passed",
+      "durationMs": 1618
+    },
+    {
+      "title": "手機導覽隔離焦點且工作台保留所選單據 ID",
+      "status": "passed",
+      "durationMs": 2027
+    }
+  ],
+  "exitCode": 0,
+  "environment": {
+    "browser": "Chromium",
+    "platform": "win32",
+    "node": "v24.22.1",
+    "database": "opsflow_e2e",
+    "credentialsOmitted": true
+  }
+}

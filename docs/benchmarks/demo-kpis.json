@@ -1,0 +1,89 @@
+{
+  "at": "2026-11-19T19:28:18.732Z",
+  "dataset": {
+    "issues": {
+      "negativeStock": 0,
+      "stockLedgerMismatch": 0,
+      "missingStock": 0,
+      "receiptMismatch": 0,
+      "movementMismatch": 0,
+      "stateMismatch": 0,
+      "approvalOrderMismatch": 0,
+      "negativeQuantity": 0
+    },
+    "counts": {
+      "projects": 5,
+      "users": 5,
+      "materials": 120,
+      "requests": 38,
+      "orders": 30,
+      "receipts": 20,
+      "movements": 60
+    }
+  },
+  "kpis": {
+    "averageApprovalHours": 15.67741935483871,
+    "pendingApprovals": 5,
+    "onTimeDeliveryRate": 0.8,
+    "partialReceiptRate": 0.3333333333333333,
+    "overdueCents": 8360947,
+    "actualCostCents": 8826708,
+    "inventoryTurnover": null,
+    "inventoryTurnoverReason": "尚無期初與期末庫存估值快照，無法計算期間平均庫存成本",
+    "anomalyCount": 22
+  },
+  "projects": [
+    {
+      "id": 6,
+      "name": "南港智慧辦公室佈建",
+      "code": "PRJ-001",
+      "budgetCents": 5048612,
+      "status": "ACTIVE",
+      "committedCents": 4498760,
+      "actualCents": 2470980,
+      "budgetUse": 0.8910884813489331
+    },
+    {
+      "id": 7,
+      "name": "左營廠區網路更新",
+      "code": "PRJ-002",
+      "budgetCents": 7463928,
+      "status": "ACTIVE",
+      "committedCents": 3726964,
+      "actualCents": 1150360,
+      "budgetUse": 0.49933011143730216
+    },
+    {
+      "id": 8,
+      "name": "台南產線監控整合",
+      "code": "PRJ-003",
+      "budgetCents": 5445428,
+      "status": "ACTIVE",
+      "committedCents": 2717714,
+      "actualCents": 904140,
+      "budgetUse": 0.4990817985289678
+    },
+    {
+      "id": 9,
+      "name": "屏東倉儲電力改善",
+      "code": "PRJ-004",
+      "budgetCents": 8499506,
+      "status": "ACTIVE",
+      "committedCents": 4244753,
+      "actualCents": 2070620,
+      "budgetUse": 0.4994117305170442
+    },
+    {
+      "id": 10,
+      "name": "高雄總部機房擴建",
+      "code": "PRJ-005",
+      "budgetCents": 4744104,
+      "status": "ACTIVE",
+      "committedCents": 2367052,
+      "actualCents": 2230608,
+      "budgetUse": 0.49894606020441373
+    }
+  ],
+  "from": "2026-08-21T19:28:18.638Z",
+  "asOf": "2026-11-19T19:28:18.638Z"
+}
