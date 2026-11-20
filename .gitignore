@@ -18,3 +18,4 @@ tests/.generated/
 .impeccable/live/
 docs/testing/ci-artifacts/
 __pycache__/
+.local/

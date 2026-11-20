@@ -1,14 +1,66 @@
 # OpsFlow ERP
 
-Engineering Operations & Resource Management Platform
+以工程請購、簽核、採購、部分收貨與領料串起專案成本，展示跨角色業務流程與資料一致性。
 
-以虛構企業「海嶼系統整合有限公司」展示完整工程請購、簽核、採購、部分收貨、領料與成本追蹤。前後端實際連接 MySQL，沒有以 Mock UI 或硬編碼統計代替業務流程。
+![OpsFlow 真實營運工作台，所有公司及交易均為合成展示資料](docs/media/cover.png)
+
+## 操作展示
+
+![請購、簽核與採購的實際操作節錄](docs/media/demo.gif)
+
+[觀看完整操作影片](docs/media/demo.mp4) · [跨角色操作指南](docs/portfolio/DEMO_INSTRUCTIONS.md) · [English project summary](docs/portfolio/PROJECT_SUMMARY.md)
+
+影片與下方新截圖來自本機隔離 MySQL 展示環境，使用虛構企業「海嶼系統整合有限公司」與合成資料。前端實際呼叫 NestJS API，交易寫入 MySQL。影片檔隨 PR 交付，沒有新增公開服務；GitHub 若只顯示檔案頁，可下載播放。
+
+## 解決的問題與功能畫面
+
+工程採購常把請購、簽核、到貨與專案成本分散在不同表單。OpsFlow 以同一組單據串接角色，讓使用者追蹤目前卡在哪個階段，以及已承諾的採購金額和實際領料成本。
+
+### 請購與簽核：保留單據狀態和退回紀錄
+
+工程人員提出需求，同部門其他人員簽核；自批、越權與超出規則的狀態切換由後端檢查。
+
+![請購及簽核清單](docs/media/requests.png)
+
+### 採購與部分收貨：追蹤待收數量
+
+核准請購可建立唯一採購單。分批到貨逐筆入庫，不要求一次收齊，也不允許超收。
+
+![採購與收貨](docs/media/orders.png)
+
+### 庫存與領料：從異動帳追查專案成本
+
+領料以原子條件更新避免負庫存，並將成功交易寫入庫存異動與稽核紀錄。
+
+![庫存及領料頁面](docs/media/inventory.png)
+
+### 專案與預算：分開呈現承諾金額和實際成本
+
+成本來自實際單據及 SQL 彙總，頁面可查看預算與各專案進度。
+
+![工程專案與成本](docs/media/projects.png)
+
+## 架構與 Engineering Highlights
+
+![Vue、NestJS、Prisma、MySQL 與供應商模擬服務關係](docs/media/architecture.svg)
+
+- **交易邊界集中在後端。** 收貨先鎖 PO，再更新數量、庫存、異動、稽核與 replay 結果；任一步驟失敗整筆 rollback。
+- **重送與並行分開處理。** Idempotency Key 比對 actor、scope 和 payload；不同 Key 的收貨仍由資料庫鎖及條件更新保護。領料扣庫存失敗回 409。
+- **維護案例有回歸依據。** 非同步搜尋覆寫、Session 過期恢復與核准預算競態，保留根因、修復及測試證據。
+- **技術選擇維持單體。** Vue、NestJS 與共用 Zod 契約放在 npm workspaces；採單一 Nest module、按業務分檔，便於追查交易，沒有另外引入訊息佇列或微服務。
+
+[架構與交易邊界](docs/architecture/SYSTEM_ARCHITECTURE.md) · [ADR](docs/decisions/ADR-001.md) · [真實修復紀錄](docs/maintenance/REAL_BUG_RECORDS.md) · [本次架構查核與媒體驗證](docs/SHOWCASE_VALIDATION.md)
+
+## Testing & Results
+
+歷史交付版本 `bc92260` 的 [CI 44629535764](https://github.com/Cizing24/opsflow-mini-erp/actions/runs/44629535764) 記錄 7 項 Unit、27 項真實 MySQL Integration、4 項 Chromium E2E，共 38 項通過；這是該版本結果，本次文件變更的重跑範圍另列在 [驗證報告](docs/SHOWCASE_VALIDATION.md)。
+
+涵蓋最後一件庫存競爭、相同 Key 重送、超收、交易 rollback、權限與 Session 恢復。既有 Benchmark 使用 100,706 筆異動、1,080 次讀 API 樣本及並行 1／4／16；量測條件、原始值與限制見 [Benchmark Results](docs/benchmarks/RESULTS.md)。它是本機短測，不能外推為正式 SLA。故障注入、Migration 與備份還原演練另列為模擬驗證。
 
 ## 本機啟動（Windows + PowerShell + Docker Desktop）
 
 ```powershell
-# main 保留初始基礎；完整交付在待審查 Feature Branch。
-git clone --branch feature/erp-core https://github.com/Cizing24/opsflow-mini-erp.git
+git clone https://github.com/Cizing24/opsflow-mini-erp.git
 cd opsflow-mini-erp
 ./scripts/init.ps1
 ```
@@ -44,15 +96,15 @@ docs             架構、業務、資料、測試、維護與作品集材料
 
 ## 資料與來源
 
-| 模式 | 專案 | PO | 庫存異動 |
-|---|---:|---:|---:|
-| Guided | 5 | 30 | 60 |
-| Business | 50 | 1,000 | 706 |
-| Benchmark | 50 | 1,000 | 100,706 |
+| 模式      | 專案 |    PO | 庫存異動 |
+| --------- | ---: | ----: | -------: |
+| Guided    |    5 |    30 |       60 |
+| Business  |   50 | 1,000 |      706 |
+| Benchmark |   50 | 1,000 |  100,706 |
 
-Guided 初始有 20 個合成物料；本次本機另實際匯入 100 個 UCI 公開來源衍生商品，共 120。UCI 為歷史零售資料，僅保留商品代碼與名稱；成本是合成欄位，沒有把零售交易冒充工程簽核。WWI 已查證官方來源與授權，未匯入。見 [Data Sources](docs/data-sources/DATA_SOURCES.md)、[第三方聲明](THIRD_PARTY_NOTICES.md)。
+Guided 初始有 20 個合成物料；歷史交付環境另外匯入 100 個 UCI 公開來源衍生商品，共 120。乾淨啟動不會自動匯入公開目錄。UCI 為歷史零售資料，僅保留商品代碼與名稱；成本是合成欄位，沒有把零售交易冒充工程簽核。WWI 已查證官方來源與授權，未匯入。見 [Data Sources](docs/data-sources/DATA_SOURCES.md)、[第三方聲明](THIRD_PARTY_NOTICES.md)。
 
-ERP 不依賴公開下載；可選擇離線重建：
+ERP 可直接使用合成 seed 啟動；下列指令另外下載、整理並匯入公開商品目錄。只有在來源 ZIP 已快取時，資料整理步驟才可離線執行：
 
 ```powershell
 npm ci
